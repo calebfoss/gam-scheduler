@@ -10,7 +10,8 @@ class App extends React.Component {
       <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
         <div id="topRow">
-          <Taken />
+          <Taken/>
+          <Taken/>
         </div>
       </div>
     );
@@ -24,7 +25,7 @@ const Taken = props => {
       allCourses.push({ program, number, name });
   });
   return (
-    <div className="checklist">
+    <div className="checklist" style={{gridColumnStart: 1}}>
       <h2>Courses taken</h2>
       <p>Check each course that you have previously taken.</p>
       <ul>

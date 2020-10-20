@@ -4,14 +4,16 @@
   box-sizing: border-box;
 }
 
-/* html, body, #main {
+html, body, #main {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
- */
+
 #app {
   height: 100%;
+  display: grid;
 }
 
 li {
@@ -19,7 +21,9 @@ li {
 }
 
 #topRow {
+  display: grid;
   height: 50%;
+  grid-template-columns: 33%, 33%, 33%;
 }
 
 .checklist {
