@@ -24,6 +24,14 @@ class App extends React.Component {
     }));
     this.setState({ coursesTaken });
   }
+  checkPrereqs(prereqs) {
+    const { coursesTaken } = this.state;
+    if(typeof prereqs === "object") return coursesTaken.some(course => course.program === preqreqs.program && )
+    else if (prereqs[0] === "AND")
+      return prereqs.every(prereq => this.checkPrereqs(coursesTaken, prereq));
+    else if (prereqs[0] === "OR")
+      return prereqs.some(prereq => this.checkPrereqs(coursesTaken, prereq));
+  }
   render() {
     const availableCourses = winterCourses.filter(course =>
       this.state.coursesTaken.every(
@@ -46,7 +54,9 @@ class App extends React.Component {
               ({ required }) => required
             )}
           />
-          <Electives electives={availableCourses.filter(())}
+          <Electives
+            electives={availableCourses.filter(({ required }) => !required)}
+          />
         </div>
       </div>
     );
@@ -87,7 +97,7 @@ const Requirements = ({ requiredCourses }) => {
           <li key={course.name + course.section}>
             <input type="checkbox" id={name} />
             <label htmlFor={course.name}>
-              {course.program}: {course.name}
+              {course.program} {course.number}: {course.name}
             </label>
             <br />
             <span style={{ paddingLeft: "20px" }}>
@@ -110,15 +120,15 @@ const Requirements = ({ requiredCourses }) => {
 
 const Electives = ({ electives }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 2 }}>
-      <h2>Available Major Requirements</h2>
+    <div className="checklist" style={{ gridColumnStart: 3 }}>
+      <h2>Available GAM Electives</h2>
       <p>Check each course that you would like to take.</p>
       <ul>
         {electives.map(course => (
           <li key={course.name + course.section}>
             <input type="checkbox" id={name} />
             <label htmlFor={course.name}>
-              {course.program}: {course.name}
+              {course.program} {course.number}: {course.name}
             </label>
             <br />
             <span style={{ paddingLeft: "20px" }}>

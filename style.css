@@ -23,7 +23,7 @@ li {
 #topRow {
   display: grid;
   height: 50%;
-  grid-template-columns: 33.3%, 33.3%, 33.3%;
+  grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 .checklist {
