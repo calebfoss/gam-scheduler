@@ -680,7 +680,7 @@ const winterCourses = [
   {
     program: "GAM",
     number: 397,
-    section: 501,
+    section: 801,
     name: "Topics in Game Design",
     credits: 4,
     prereqs: [],

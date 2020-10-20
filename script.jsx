@@ -26,20 +26,29 @@ class App extends React.Component {
   }
   checkPrereqs(prereqs) {
     const { coursesTaken } = this.state;
-    if(typeof prereqs === "object") return coursesTaken.some(course => course.program === preqreqs.program && )
-    else if (prereqs[0] === "AND")
-      return prereqs.every(prereq => this.checkPrereqs(coursesTaken, prereq));
+    if (!Array.isArray(prereqs))
+      return coursesTaken.some(
+        course =>
+          course.taken &&
+          course.program === prereqs.program &&
+          course.number === prereqs.number
+      );
+    else if (prereqs.length === 0) {
+      return true;
+    } else if (prereqs[0] === "AND")
+      return prereqs.every(prereq => this.checkPrereqs(prereq));
     else if (prereqs[0] === "OR")
-      return prereqs.some(prereq => this.checkPrereqs(coursesTaken, prereq));
+      return prereqs.some(prereq => this.checkPrereqs(prereq));
   }
   render() {
-    const availableCourses = winterCourses.filter(course =>
-      this.state.coursesTaken.every(
-        takenCourse =>
-          !takenCourse.taken ||
-          takenCourse.program !== course.program ||
-          takenCourse.number !== course.number
-      )
+    const availableCourses = winterCourses.filter(
+      course =>
+        this.state.coursesTaken.every(
+          takenCourse =>
+            !takenCourse.taken ||
+            takenCourse.program !== course.program ||
+            takenCourse.number !== course.number
+        ) && this.checkPrereqs(course.prereqs)
     );
     return (
       <div id="app">
