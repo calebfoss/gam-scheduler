@@ -1,5 +1,5 @@
-module.exports = [
-  {
+/*
+{
     program: "GAM",
     number: 100,
     section: 100,
@@ -11,6 +11,9 @@ module.exports = [
     endTime: [],
     required: true
   },
+  */
+
+module.exports = [
   {
     program: "GD",
     number: 105,
@@ -242,13 +245,25 @@ module.exports = [
   {
     program: "ANI",
     number: 230,
-    section: 501,
+    section: 503,
+    name: "3D Design and Modeling",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: true
+  },
+  {
+    program: "ANI",
+    number: 230,
+    section: 504,
     name: "3D Design and Modeling",
     credits: 4,
     prereqs: [],
     days: ["M", "W"],
-    startTime: [13, 30],
-    endTime: [15, 0],
+    startTime: [15, 10],
+    endTime: [16, 40],
     required: true
   },
   {
@@ -259,6 +274,36 @@ module.exports = [
     credits: 4,
     prereqs: [245],
     days: ["Tu"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: true
+  },
+  {
+    program: "ANI",
+    number: 231,
+    section: 501,
+    name: "3D Animation",
+    credits: 4,
+    prereqs: [
+      "AND",
+      { program: "ANI", number: 230, name: "3D Design and Modeling" }
+    ],
+    days: ["M", "W"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: true
+  },
+  {
+    program: "ANI",
+    number: 231,
+    section: 801,
+    name: "3D Animation",
+    credits: 4,
+    prereqs: [
+      "AND",
+      { program: "ANI", number: 230, name: "3D Design and Modeling" }
+    ],
+    days: ["Th"],
     startTime: [17, 45],
     endTime: [21, 0],
     required: true
@@ -306,9 +351,11 @@ module.exports = [
     name: "Game Development II",
     credits: 4,
     prereqs: [
+      "AND",
       { program: "GAM", number: 226, name: "Fundamentals of Game Design" },
       [
-        [{ program: "GAM", number: 244, name: "Game Development I" }],
+        "OR",
+        { program: "GAM", number: 244, name: "Game Development I" },
         {
           program: "CSC",
           number: 241,
@@ -341,10 +388,9 @@ module.exports = [
     name: "Scoring for Games",
     credits: 4,
     prereqs: [
-      [
-        { program: "GAM", number: 250, name: "Game Sound Design I" },
-        { program: "POST", number: 124, name: "Sound Design I" }
-      ]
+      "OR",
+      { program: "GAM", number: 250, name: "Game Sound Design I" },
+      { program: "POST", number: 124, name: "Sound Design I" }
     ],
     days: ["M"],
     startTime: [17, 45],
@@ -358,7 +404,8 @@ module.exports = [
     name: "The Business of Indie Games",
     credits: 4,
     prereqs: [
-      [{ program: "GAM", number: 229, name: "Presentation and Communication" }]
+      "AND",
+      { program: "GAM", number: 229, name: "Presentation and Communication" }
     ],
     days: ["Tu", "Th"],
     startTime: [17, 45],
@@ -372,20 +419,19 @@ module.exports = [
     name: "Practical Scripting for Games",
     credits: 4,
     prereqs: [
-      [
-        { program: "GAM", number: 245, name: "Game Development II" },
-        {
-          program: "CSC",
-          number: 241,
-          name: "Introduction to Computer Science I"
-        },
-        {
-          program: "CSC",
-          number: 241,
-          name: "Introduction to Computer Science II"
-        },
-        { program: "CSC", number: 243, name: "Python for Programers" }
-      ]
+      "OR",
+      { program: "GAM", number: 245, name: "Game Development II" },
+      {
+        program: "CSC",
+        number: 241,
+        name: "Introduction to Computer Science I"
+      },
+      {
+        program: "CSC",
+        number: 241,
+        name: "Introduction to Computer Science II"
+      },
+      { program: "CSC", number: 243, name: "Python for Programers" }
     ],
     days: [],
     startTime: [],
@@ -398,7 +444,10 @@ module.exports = [
     section: 801,
     name: "Introduction to Level Design",
     credits: 4,
-    prereqs: [[{ program: "GAM", number: 245, name: "Game Development I" }]],
+    prereqs: [
+      "AND",
+      { program: "GAM", number: 245, name: "Game Development I" }
+    ],
     days: ["M"],
     startTime: [17, 45],
     endTime: [21, 0],
