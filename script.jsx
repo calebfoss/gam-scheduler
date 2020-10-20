@@ -25,6 +25,14 @@ class App extends React.Component {
     this.setState({ coursesTaken });
   }
   render() {
+    const availableCourses = winterCourses.filter(course =>
+      this.state.coursesTaken.every(
+        takenCourse =>
+          !takenCourse.taken ||
+          takenCourse.program !== course.program ||
+          takenCourse.number !== course.number
+      )
+    );
     return (
       <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
@@ -33,7 +41,12 @@ class App extends React.Component {
             coursesTaken={this.state.coursesTaken}
             toggleCourseTaken={course => this.toggleCourseTaken(course)}
           />
-          <Requirements coursesTaken={this.state.coursesTaken} />
+          <Requirements
+            requiredCourses={availableCourses.filter(
+              ({ required }) => required
+            )}
+          />
+          <Electives electives={availableCourses.filter(())}
         </div>
       </div>
     );
@@ -64,33 +77,63 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
   );
 };
 
-const Requirements = ({ coursesTaken }) => {
+const Requirements = ({ requiredCourses }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 2 }}>
       <h2>Available Major Requirements</h2>
       <p>Check each course that you would like to take.</p>
       <ul>
-        {winterCourses
-          .filter(
-            course =>
-              course.required &&
-              coursesTaken.every(
-                takenCourse =>
-                  !takenCourse.taken ||
-                  takenCourse.program !== course.program ||
-                  takenCourse.number !== course.number
-              )
-          )
-          .map(course => (
-            <li key={course.name + course.section}>
-              <input type="checkbox" id={name} />
-              <label htmlFor={course.name}>
-                {course.program}: {course.name}
-              </label>
-              <br />
-            {course.days.length ? {`${course.days.join("")} ${course.startTime[0] % 12}: ${course.startTime[1].toString().padStart(2, 0)}`} : "Async"}
-            </li>
-          ))}
+        {requiredCourses.map(course => (
+          <li key={course.name + course.section}>
+            <input type="checkbox" id={name} />
+            <label htmlFor={course.name}>
+              {course.program}: {course.name}
+            </label>
+            <br />
+            <span style={{ paddingLeft: "20px" }}>
+              {course.days.length
+                ? `${course.days.join("")} ${course.startTime[0] %
+                    12}:${course.startTime[1].toString().padStart(2, 0)}${
+                    course.startTime[0] < 12 ? "AM" : "PM"
+                  } - ${course.endTime[0] %
+                    12}:${course.endTime[1].toString().padStart(2, 0)} ${
+                    course.endTime[0] < 12 ? "AM" : "PM"
+                  }`
+                : "Async"}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const Electives = ({ electives }) => {
+  return (
+    <div className="checklist" style={{ gridColumnStart: 2 }}>
+      <h2>Available Major Requirements</h2>
+      <p>Check each course that you would like to take.</p>
+      <ul>
+        {electives.map(course => (
+          <li key={course.name + course.section}>
+            <input type="checkbox" id={name} />
+            <label htmlFor={course.name}>
+              {course.program}: {course.name}
+            </label>
+            <br />
+            <span style={{ paddingLeft: "20px" }}>
+              {course.days.length
+                ? `${course.days.join("")} ${course.startTime[0] %
+                    12}:${course.startTime[1].toString().padStart(2, 0)}${
+                    course.startTime[0] < 12 ? "AM" : "PM"
+                  } - ${course.endTime[0] %
+                    12}:${course.endTime[1].toString().padStart(2, 0)} ${
+                    course.endTime[0] < 12 ? "AM" : "PM"
+                  }`
+                : "Async"}
+            </span>
+          </li>
+        ))}
       </ul>
     </div>
   );
