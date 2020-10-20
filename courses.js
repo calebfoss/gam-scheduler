@@ -279,14 +279,53 @@ module.exports = [
     name: "Advanced Level Design",
     credits: 4,
     prereqs: [
-      [
-        { program: "GAM", number: 341, name: "Introduction to Level Design" },
-        { program: "GAM", number: 392, name: "Game Modification Workshop" }
-      ]
+      "OR",
+      { program: "GAM", number: 341, name: "Introduction to Level Design" },
+      { program: "GAM", number: 392, name: "Game Modification Workshop" }
     ],
+    days: ["M"],
+    startTime: [13, 30],
+    endTime: [16, 45],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 365,
+    section: 501,
+    name: "Advanced Game Design",
+    credits: 4,
+    prereqs: [
+      "OR",
+      [
+        "AND",
+        {
+          program: "GAM",
+          number: 340,
+          name: "Practical Scripting for Games"
+        },
+        {
+          program: "GAM",
+          number: 341,
+          name: "Introduction to Level Design"
+        }
+      ],
+      { program: "GAM", number: 355, name: "Solo Game Development Project" }
+    ],
+    days: ["M", "W"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: true
+  },
+  {
+    program: "GAM",
+    number: 370,
+    section: 100,
+    name: "",
+    credits: 4,
+    prereqs: [],
     days: [],
     startTime: [],
     endTime: [],
-    required: true
+    required: false
   }
 ];
