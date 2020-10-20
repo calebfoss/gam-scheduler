@@ -439,10 +439,97 @@ module.exports = [
     section: 501,
     name: "Game Development Project I",
     credits: 4,
-    prereqs: ["OR", {program: "GAM", number: 377, name: }],
-    days: [],
-    startTime: [],
-    endTime: [],
+    prereqs: [
+      "OR",
+      { program: "GAM", number: 377, name: "Game Engine Programming II" },
+      { program: "GAM", number: 392, name: "Game Modification Workshop" }
+    ],
+    days: ["M", "W"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: true
+  },
+  {
+    program: "GAM",
+    number: 394,
+    section: 801,
+    name: "Game Development Project I",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "GAM", number: 377, name: "Game Engine Programming II" },
+      { program: "GAM", number: 392, name: "Game Modification Workshop" }
+    ],
+    days: ["W"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: true
+  },
+  {
+    program: "GAM",
+    number: 395,
+    section: 501,
+    name: "Game Development Project II",
+    credits: 4,
+    prereqs: [
+      "AND",
+      {
+        program: "GAM",
+        number: 394,
+        name: "Game Development Project I"
+      }
+    ],
+    days: ["Tu", "Th"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: true
+  },
+  {
+    program: "GAM",
+    number: 397,
+    section: 501,
+    name: "Topics in Game Design",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 397,
+    section: 501,
+    name: "Topics in Game Design",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: false
+  },
+  {
+    program: "GD",
+    number: 105,
+    section: 501,
+    name: "Intro to Visual Design",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: true
+  },
+  {
+    program: "GD",
+    number: 105,
+    section: 501,
+    name: "Intro to Visual Design",
+    credits: 4,
+    prereqs: [],
+    days: ["Th"],
+    startTime: [10, 10],
+    endTime: [11, 40],
     required: true
   },
 ];
