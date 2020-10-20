@@ -380,12 +380,69 @@ module.exports = [
           number: 350,
           name: "Object-Oriented Software Development Principals"
         },
-        {program: "CSC", number: 361, name: }
+        { program: "CSC", number: 361, name: "Optimized C++" }
+      ]
+    ],
+    days: ["M"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 376,
+    section: 810,
+    name: "Artificial Intelligence for Computer Games",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "GAM", number: 372, name: "Object-Oriented Game Development" },
+      [
+        "AND",
+        {
+          program: "SE",
+          number: 350,
+          name: "Object-Oriented Software Development Principals"
+        },
+        { program: "CSC", number: 361, name: "Optimized C++" }
       ]
     ],
     days: [],
     startTime: [],
     endTime: [],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 392,
+    section: 801,
+    name: "Game Modification Workshop",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "GAM", number: 362, name: "Making Deep Games" },
+      { program: "GAM", number: 372, name: "Object-Oriented Game Development" },
+      [
+        "AND",
+        { program: "ANI", number: 344, name: "Visual Design for Games" },
+        { program: "GAM", number: 341, name: "Introduction to Level Design" }
+      ]
+    ],
+    days: ["M"],
+    startTime: [17, 45],
+    endTime: [21, 0],
     required: true
-  }
+  },
+  {
+    program: "GAM",
+    number: 394,
+    section: 501,
+    name: "Game Development Project I",
+    credits: 4,
+    prereqs: ["OR", {program: "GAM", number: 377, name: }],
+    days: [],
+    startTime: [],
+    endTime: [],
+    required: true
+  },
 ];
