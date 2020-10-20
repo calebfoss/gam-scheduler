@@ -19,9 +19,10 @@ class App extends React.Component {
       ...otherCourse,
       ...{ taken: otherCourse.taken || otherCourse === toggleCourse }
     }));
-    this.setState(coursesTaken);
+    this.setState({ coursesTaken });
   }
   render() {
+    console.log(this.state.coursesTaken);
     return (
       <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
@@ -30,6 +31,7 @@ class App extends React.Component {
             coursesTaken={this.state.coursesTaken}
             toggleCourseTaken={course => this.toggleCourseTaken(course)}
           />
+          <Requirements coursesTaken={this.state.coursesTaken} />
         </div>
       </div>
     );
@@ -55,6 +57,33 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
             </label>
           </li>
         ))}
+      </ul>
+    </div>
+  );
+};
+
+const Requirements = ({ coursesTaken }) => {
+  return (
+    <div className="checklist" style={{ gridColumnStart: 2 }}>
+      <h2>Available Major Requirements</h2>
+      <p>Check each course that you would like to take.</p>
+      <ul>
+        {winterCourses
+          .filter(course =>
+            coursesTaken.every(
+              taken =>
+                taken.program !== course.program &&
+                taken.number !== course.number
+            )
+          )
+          .map(course => (
+            <li key={course.name}>
+              <input type="checkbox" id={name} />
+              <label htmlFor={course.name}>
+                {course.program}: {course.name}
+              </label>
+            </li>
+          ))}
       </ul>
     </div>
   );
