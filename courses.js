@@ -13,7 +13,7 @@
   },
   */
 
-module.exports = [
+const courses = [
   {
     program: "GD",
     number: 105,
