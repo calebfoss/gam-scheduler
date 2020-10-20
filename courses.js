@@ -319,13 +319,73 @@ module.exports = [
   {
     program: "GAM",
     number: 370,
-    section: 100,
-    name: "",
+    section: 801,
+    name: "Rendering and Graphics Programming",
     credits: 4,
-    prereqs: [],
+    prereqs: [
+      "AND",
+      { program: "GAM", number: 325, name: "Applied 3D Geometry" },
+      { program: "CSC", number: 361, name: "Optimized C++" }
+    ],
+    days: ["Th"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 370,
+    section: 810,
+    name: "Rendering and Graphics Programming",
+    credits: 4,
+    prereqs: [
+      "AND",
+      { program: "GAM", number: 325, name: "Applied 3D Geometry" },
+      { program: "CSC", number: 361, name: "Optimized C++" }
+    ],
     days: [],
     startTime: [],
     endTime: [],
     required: false
+  },
+  {
+    program: "GAM",
+    number: 374,
+    section: 501,
+    name: "Game Engine Programming I",
+    credits: 4,
+    prereqs: [
+      "AND",
+      { program: "GAM", number: 372, name: "Object-Oriented Game Development" },
+      { program: "GAM", number: 325, name: "Applied 3D Geometry" }
+    ],
+    days: ["Tu", "Th"],
+    startTime: [15, 10],
+    endTime: [16, 40],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 376,
+    section: 801,
+    name: "Artificial Intelligence for Computer Games",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "GAM", number: 372, name: "Object-Oriented Game Development" },
+      [
+        "AND",
+        {
+          program: "SE",
+          number: 350,
+          name: "Object-Oriented Software Development Principals"
+        },
+        {program: "CSC", number: 361, name: }
+      ]
+    ],
+    days: [],
+    startTime: [],
+    endTime: [],
+    required: true
   }
 ];
