@@ -21,7 +21,7 @@ module.exports = [
     days: ["Tu"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: false,
+    required: false
   },
   {
     program: "GAM",
@@ -235,14 +235,58 @@ module.exports = [
   },
   {
     program: "GAM",
-    number: 100,
-    section: 100,
-    name: "",
+    number: 340,
+    section: 502,
+    name: "Practical Scripting for Games",
     credits: 4,
-    prereqs: [],
+    prereqs: [
+      [
+        { program: "GAM", number: 245, name: "Game Development II" },
+        {
+          program: "CSC",
+          number: 241,
+          name: "Introduction to Computer Science I"
+        },
+        {
+          program: "CSC",
+          number: 241,
+          name: "Introduction to Computer Science II"
+        },
+        { program: "CSC", number: 243, name: "Python for Programers" }
+      ]
+    ],
     days: [],
     startTime: [],
     endTime: [],
     required: true
   },
+  {
+    program: "GAM",
+    number: 341,
+    section: 801,
+    name: "Introduction to Level Design",
+    credits: 4,
+    prereqs: [[{ program: "GAM", number: 245, name: "Game Development I" }]],
+    days: ["M"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: true
+  },
+  {
+    program: "GAM",
+    number: 342,
+    section: 501,
+    name: "Advanced Level Design",
+    credits: 4,
+    prereqs: [
+      [
+        { program: "GAM", number: 341, name: "Introduction to Level Design" },
+        { program: "GAM", number: 392, name: "Game Modification Workshop" }
+      ]
+    ],
+    days: [],
+    startTime: [],
+    endTime: [],
+    required: true
+  }
 ];
