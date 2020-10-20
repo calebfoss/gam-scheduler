@@ -90,7 +90,7 @@ const courses = [
     program: "IT",
     number: 223,
     section: 501,
-    name: "",
+    name: "Data Analysis",
     credits: 4,
     prereqs: [
       "OR",
@@ -106,7 +106,7 @@ const courses = [
     program: "IT",
     number: 223,
     section: 502,
-    name: "",
+    name: "Data Analysis",
     credits: 4,
     prereqs: [
       "OR",
@@ -122,7 +122,7 @@ const courses = [
     program: "IT",
     number: 223,
     section: 520,
-    name: "",
+    name: "Data Analysis",
     credits: 4,
     prereqs: [
       "OR",

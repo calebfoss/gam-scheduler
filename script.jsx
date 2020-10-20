@@ -23,10 +23,17 @@ const Taken = props => {
   });
   return (
     <div>
+      
+    <ul>
       {allCourses.map(({ program, number, name }) => (
-        <p>{name}</p>
+        <li key={name}>
+          <input type="checkbox" value={name} />
+          <label htmlFor={name}>
+            {program}: {name}
+          </label>
+        </li>
       ))}
-    </div>
+    </ul></div>
   );
 };
 
