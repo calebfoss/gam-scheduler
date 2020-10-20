@@ -12,6 +12,54 @@ module.exports = [
     required: true
   },
   {
+    program: "GD",
+    number: 105,
+    section: 501,
+    name: "Intro to Visual Design",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: true
+  },
+  {
+    program: "GD",
+    number: 105,
+    section: 502,
+    name: "Intro to Visual Design",
+    credits: 4,
+    prereqs: [],
+    days: ["Th"],
+    startTime: [10, 0],
+    endTime: [13, 15],
+    required: true
+  },
+  {
+    program: "GD",
+    number: 105,
+    section: 503,
+    name: "Intro to Visual Design",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: true
+  },
+  {
+    program: "GD",
+    number: 105,
+    section: 502,
+    name: "Intro to Visual Design",
+    credits: 4,
+    prereqs: [],
+    days: ["Th"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: true
+  },
+  {
     program: "GAM",
     number: 181,
     section: 501,
@@ -33,6 +81,54 @@ module.exports = [
     days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
+    required: true
+  },
+  {
+    program: "IT",
+    number: 223,
+    section: 501,
+    name: "",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "MAT", number: 130, name: "Precalculus" },
+      { program: "MAT", number: 140, name: "Discrete Mathematics I" }
+    ],
+    days: ["M", "W"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: true
+  },
+  {
+    program: "IT",
+    number: 223,
+    section: 502,
+    name: "",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "MAT", number: 130, name: "Precalculus" },
+      { program: "MAT", number: 140, name: "Discrete Mathematics I" }
+    ],
+    days: ["M", "W"],
+    startTime: [11, 50],
+    endTime: [13, 20],
+    required: true
+  },
+  {
+    program: "IT",
+    number: 223,
+    section: 520,
+    name: "",
+    credits: 4,
+    prereqs: [
+      "OR",
+      { program: "MAT", number: 130, name: "Precalculus" },
+      { program: "MAT", number: 140, name: "Discrete Mathematics I" }
+    ],
+    days: [],
+    startTime: [],
+    endTime: [],
     required: true
   },
   {
@@ -118,6 +214,42 @@ module.exports = [
     startTime: [17, 45],
     endTime: [21, 0],
     required: false
+  },
+  {
+    program: "ANI",
+    number: 230,
+    section: 501,
+    name: "3D Design and Modeling",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: true
+  },
+  {
+    program: "ANI",
+    number: 230,
+    section: 502,
+    name: "3D Design and Modeling",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [11, 50],
+    endTime: [13, 20],
+    required: true
+  },
+  {
+    program: "ANI",
+    number: 230,
+    section: 501,
+    name: "3D Design and Modeling",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: true
   },
   {
     program: "GAM",
@@ -507,29 +639,5 @@ module.exports = [
     startTime: [17, 45],
     endTime: [21, 0],
     required: false
-  },
-  {
-    program: "GD",
-    number: 105,
-    section: 501,
-    name: "Intro to Visual Design",
-    credits: 4,
-    prereqs: [],
-    days: ["M", "W"],
-    startTime: [10, 10],
-    endTime: [11, 40],
-    required: true
-  },
-  {
-    program: "GD",
-    number: 105,
-    section: 501,
-    name: "Intro to Visual Design",
-    credits: 4,
-    prereqs: [],
-    days: ["Th"],
-    startTime: [10, 10],
-    endTime: [11, 40],
-    required: true
-  },
+  }
 ];
