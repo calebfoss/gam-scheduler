@@ -7,9 +7,11 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
-        <Taken />
+        <div id="topRow">
+          <Taken />
+        </div>
       </div>
     );
   }
@@ -22,19 +24,21 @@ const Taken = props => {
       allCourses.push({ program, number, name });
   });
   return (
-    <div>
-      
-    <ul>
-      {allCourses.map(({ program, number, name }) => (
-        <li key={name}>
-          <input type="checkbox" value={name} />
-          <label htmlFor={name}>
-            {program}: {name}
-          </label>
-        </li>
-      ))}
-    </ul></div>
+    <div className="checklist">
+      <h2>Courses taken</h2>
+      <p>Check each course that you have previously taken.</p>
+      <ul>
+        {allCourses.map(({ program, number, name }) => (
+          <li key={name}>
+            <input type="checkbox" id={name} />
+            <label htmlFor={name}>
+              {program}: {name}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-ReactDOM.render(<App />, document.querySelector("#app"));
+ReactDOM.render(<App />, document.querySelector("#main"));

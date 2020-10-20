@@ -1,8 +1,33 @@
 /* this file is loaded by index.html and styles the page */
-/*
+
 * {
   box-sizing: border-box;
 }
+
+/* html, body, #main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ */
+#app {
+  height: 100%;
+}
+
+li {
+  list-style-type: none;
+}
+
+#topRow {
+  height: 50%;
+}
+
+.checklist {
+  height: 100%;
+  overflow: auto;
+}
+/*
+
 
 body {
   font-family: sans-serif;
