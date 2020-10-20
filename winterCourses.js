@@ -13,7 +13,7 @@
   },
   */
 
-const courses = [
+const winterCourses = [
   {
     program: "GD",
     number: 105,
