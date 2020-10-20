@@ -53,7 +53,7 @@ const winterCourses = [
   {
     program: "GD",
     number: 105,
-    section: 502,
+    section: 801,
     name: "Intro to Visual Design",
     credits: 4,
     prereqs: [],

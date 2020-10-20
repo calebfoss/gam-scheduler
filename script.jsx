@@ -17,12 +17,14 @@ class App extends React.Component {
   toggleCourseTaken(toggleCourse) {
     const coursesTaken = this.state.coursesTaken.map(otherCourse => ({
       ...otherCourse,
-      ...{ taken: otherCourse.taken || otherCourse === toggleCourse }
+      ...{
+        taken:
+          otherCourse === toggleCourse ? !otherCourse.taken : otherCourse.taken
+      }
     }));
     this.setState({ coursesTaken });
   }
   render() {
-    console.log(this.state.coursesTaken);
     return (
       <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
@@ -69,19 +71,24 @@ const Requirements = ({ coursesTaken }) => {
       <p>Check each course that you would like to take.</p>
       <ul>
         {winterCourses
-          .filter(course =>
-            coursesTaken.every(
-              taken =>
-                taken.program !== course.program &&
-                taken.number !== course.number
-            )
+          .filter(
+            course =>
+              course.required &&
+              coursesTaken.every(
+                takenCourse =>
+                  !takenCourse.taken ||
+                  takenCourse.program !== course.program ||
+                  takenCourse.number !== course.number
+              )
           )
           .map(course => (
-            <li key={course.name}>
+            <li key={course.name + course.section}>
               <input type="checkbox" id={name} />
               <label htmlFor={course.name}>
                 {course.program}: {course.name}
               </label>
+              <br />
+            {course.days.length ? {`${course.days.join("")} ${course.startTime[0] % 12}: ${course.startTime[1].toString().padStart(2, 0)}`} : "Async"}
             </li>
           ))}
       </ul>
