@@ -8,7 +8,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: true
   },
   {
     program: "GAM",
@@ -19,7 +20,8 @@ module.exports = [
     prereqs: [],
     days: ["Tu"],
     startTime: [13, 30],
-    endTime: [15, 0]
+    endTime: [15, 0],
+    required: false,
   },
   {
     program: "GAM",
@@ -30,29 +32,8 @@ module.exports = [
     prereqs: [],
     days: ["M", "W"],
     startTime: [15, 10],
-    endTime: [16, 40]
-  },
-  {
-    program: "GAM",
-    number: 224,
-    section: 201,
-    name: "Game Design for Non-Majors",
-    credits: 4,
-    prereqs: [],
-    days: ["Tu", "Th"],
-    startTime: [13, 0],
-    endTime: [14, 30]
-  },
-  {
-    program: "GAM",
-    number: 224,
-    section: 801,
-    name: "Game Design for Non-Majors",
-    credits: 4,
-    prereqs: [],
-    days: ["W"],
-    startTime: [17, 45],
-    endTime: [21, 0]
+    endTime: [16, 40],
+    required: true
   },
   {
     program: "GAM",
@@ -63,7 +44,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: true
   },
   {
     program: "GAM",
@@ -74,7 +56,8 @@ module.exports = [
     prereqs: [],
     days: ["M", "W"],
     startTime: [9, 40],
-    endTime: [11, 10]
+    endTime: [11, 10],
+    required: false
   },
   {
     program: "GAM",
@@ -85,7 +68,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: false
   },
   {
     program: "GAM",
@@ -96,7 +80,8 @@ module.exports = [
     prereqs: [],
     days: ["Tu", "Th"],
     startTime: [11, 50],
-    endTime: [13, 20]
+    endTime: [13, 20],
+    required: false
   },
   {
     program: "GAM",
@@ -107,7 +92,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: false
   },
   {
     program: "GAM",
@@ -118,7 +104,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: false
   },
   {
     program: "GAM",
@@ -129,7 +116,8 @@ module.exports = [
     prereqs: [],
     days: ["W"],
     startTime: [17, 45],
-    endTime: [21, 0]
+    endTime: [21, 0],
+    required: false
   },
   {
     program: "GAM",
@@ -140,7 +128,8 @@ module.exports = [
     prereqs: [245],
     days: ["Tu"],
     startTime: [17, 45],
-    endTime: [21, 0]
+    endTime: [21, 0],
+    required: true
   },
   {
     program: "GAM",
@@ -151,7 +140,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: true
   },
   {
     program: "GAM",
@@ -162,7 +152,8 @@ module.exports = [
     prereqs: [],
     days: ["M", "W"],
     startTime: [15, 10],
-    endTime: [16, 40]
+    endTime: [16, 40],
+    required: true
   },
   {
     program: "GAM",
@@ -173,7 +164,8 @@ module.exports = [
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
+    endTime: [],
+    required: true
   },
   {
     program: "GAM",
@@ -184,7 +176,7 @@ module.exports = [
     prereqs: [
       { program: "GAM", number: 226, name: "Fundamentals of Game Design" },
       [
-        { program: "GAM", number: 244, name: "Game Development I" },
+        [{ program: "GAM", number: 244, name: "Game Development I" }],
         {
           program: "CSC",
           number: 241,
@@ -195,7 +187,8 @@ module.exports = [
     ],
     days: ["Tu", "Th"],
     startTime: [11, 50],
-    endTime: [13, 20]
+    endTime: [13, 20],
+    required: true
   },
   {
     program: "GAM",
@@ -206,7 +199,8 @@ module.exports = [
     prereqs: [],
     days: ["W"],
     startTime: [17, 45],
-    endTime: [21, 0]
+    endTime: [21, 0],
+    required: true
   },
   {
     program: "GAM",
@@ -222,7 +216,8 @@ module.exports = [
     ],
     days: ["M"],
     startTime: [17, 45],
-    endTime: [21, 0]
+    endTime: [21, 0],
+    required: false
   },
   {
     program: "GAM",
@@ -230,9 +225,24 @@ module.exports = [
     section: 501,
     name: "The Business of Indie Games",
     credits: 4,
+    prereqs: [
+      [{ program: "GAM", number: 229, name: "Presentation and Communication" }]
+    ],
+    days: ["Tu", "Th"],
+    startTime: [17, 45],
+    endTime: [21, 0],
+    required: false
+  },
+  {
+    program: "GAM",
+    number: 100,
+    section: 100,
+    name: "",
+    credits: 4,
     prereqs: [],
     days: [],
     startTime: [],
-    endTime: []
-  }
+    endTime: [],
+    required: true
+  },
 ];
