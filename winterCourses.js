@@ -72,7 +72,7 @@ const winterCourses = [
     days: ["Tu"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: false
+    required: true
   },
   {
     program: "GAM",
