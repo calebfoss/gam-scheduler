@@ -4,9 +4,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     const allCourses = [];
-    winterCourses.forEach(({ program, number, name, reReqs }) => {
+    winterCourses.forEach(({ program, number, name, prereqs }) => {
       if (!allCourses.some(({ name: otherName }) => name === otherName))
         allCourses.push({ program, number, name });
+      prereqs.slice(1).forEach(prereq => {
+        if (
+          !allCourses.some(({ name: otherName }) => prereq.name === otherName)
+        )
+          allCourses.push({
+            program: prereq.program,
+            number: prereq.number,
+            name: prereq.name
+          });
+      });
     });
     const coursesTaken = allCourses.map(course => ({
       ...course,
@@ -23,6 +33,12 @@ class App extends React.Component {
       }
     }));
     this.setState({ coursesTaken });
+  }
+  get prereqs() {
+    const prereqs = [];
+    winterCourses.forEach(({prereqs}) => {
+      
+    })
   }
   checkPrereqs(prereqs) {
     const { coursesTaken } = this.state;
@@ -87,7 +103,7 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
               onChange={() => toggleCourseTaken(course)}
             />
             <label htmlFor={course.name}>
-              {course.program}: {course.name}
+              {course.program} {course.number}: {course.name}
             </label>
           </li>
         ))}
