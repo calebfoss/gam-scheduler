@@ -71,6 +71,20 @@ class App extends React.Component {
         <Electives
           electives={availableCourses.filter(({ required }) => !required)}
         />
+        <div id="schedule">
+          <div id="Monday" className="day">
+            <h2>Monday</h2>
+          </div>
+          <div id="Tuesday" className="day">
+            <h2>Tuesday</h2>
+          </div>
+          <div id="Wednesday" className="day">
+            <h2>Wednesday</h2>
+          </div>
+          <div id="Thursday" className="day">
+            <h2>Thursday</h2>
+          </div>
+        </div>
       </div>
     );
   }
@@ -138,7 +152,8 @@ const Requirements = ({ requiredCourses }) => {
 const Electives = ({ electives }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 3 }}>
-      <div><h2>Available GAM Electives</h2>
+      <div>
+        <h2>Available GAM Electives</h2>
         <p>Check each course that you would like to take.</p>
       </div>
       <ul>
