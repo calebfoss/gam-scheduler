@@ -53,9 +53,15 @@ ul {
 }
 
 .day {
+  display: grid;
+  grid-template-rows: 20% 80%;
   border: 2px solid black;
   border-radius: 5px;
   margin: 10px;
+}
+
+.dayCourses {
+  grid-row-start: 2
 }
 /*
 

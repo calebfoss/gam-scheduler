@@ -35,6 +35,18 @@ class App extends React.Component {
     }));
     this.setState({ previousCourses });
   }
+  toggleCourseScheduled(toggleCourse) {
+    if (this.state.scheduledCourses.includes(toggleCourse))
+      this.setState({
+        scheduledCourses: this.state.scheduledCourses.filter(
+          course => course !== toggleCourse
+        )
+      });
+    else
+      this.setState({
+        scheduledCourses: this.state.scheduledCourses.concat(toggleCourse)
+      });
+  }
   checkPrereqs(prereqs) {
     const { previousCourses } = this.state;
     if (!Array.isArray(prereqs))
@@ -67,9 +79,17 @@ class App extends React.Component {
         />
         <Requirements
           requiredCourses={availableCourses.filter(({ required }) => required)}
+          scheduledCourses={this.state.schduledCourses}
+          toggleCourseScheduled={toggleCourse =>
+            this.toggleCourseScheduled(toggleCourse)
+          }
         />
         <Electives
           electives={availableCourses.filter(({ required }) => !required)}
+          scheduledCourses={this.state.schduledCourses}
+          toggleCourseScheduled={toggleCourse =>
+            this.toggleCourseScheduled(toggleCourse)
+          }
         />
         <Schedule scheduledCourses={this.state.schduledCourses} />
       </div>
@@ -103,7 +123,11 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
   );
 };
 
-const Requirements = ({ requiredCourses }) => {
+const Requirements = ({
+  requiredCourses,
+  scheduledCourses,
+  toggleCourseScheduled
+}) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 2 }}>
       <div>
@@ -116,6 +140,8 @@ const Requirements = ({ requiredCourses }) => {
             <input
               type="checkbox"
               id={`${course.name}_${course.section}_requirement`}
+              checked={scheduledCourses.includes(course)}
+              onChange={course => toggleCourseScheduled(course)}
             />
             <label htmlFor={`${course.name}_${course.section}_requirement`}>
               {course.program} {course.number}: {course.name}
@@ -139,7 +165,7 @@ const Requirements = ({ requiredCourses }) => {
   );
 };
 
-const Electives = ({ electives }) => {
+const Electives = ({ electives, scheduledCourses, toggleCourseScheduled }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 3 }}>
       <div>
@@ -152,6 +178,8 @@ const Electives = ({ electives }) => {
             <input
               type="checkbox"
               id={`${course.name}_${course.section}_elective`}
+              checked={scheduledCourses.includes(course)}
+              onChange={course => toggleCourseScheduled(course)}
             />
             <label htmlFor={`${course.name}_${course.section}_elective`}>
               {course.program} {course.number}: {course.name}
@@ -180,7 +208,17 @@ const Schedule = ({ scheduledCourses }) => {
     <div id="schedule">
       <div id="Monday" className="day">
         <h2>Monday</h2>
-        <div style={{position: relative, background: }}
+        <div className="dayCourses">
+          <div
+            style={{
+              position: "relative",
+              background: "red",
+              bottom: 0,
+              top: 0,
+              height: "100%"
+            }}
+          />
+        </div>
       </div>
       <div id="Tuesday" className="day">
         <h2>Tuesday</h2>
