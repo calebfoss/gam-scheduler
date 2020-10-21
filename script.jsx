@@ -61,7 +61,6 @@ class App extends React.Component {
       return prereqs.slice(1).some(prereq => this.checkPrereqs(prereq));
   }
   render() {
-    console.log(this.state.scheduledCourses);
     const availableCourses = winterCourses.filter(
       course =>
         this.state.previousCourses.every(
@@ -144,7 +143,6 @@ const Requirements = ({
   scheduledCourses,
   addCourseScheduled
 }) => {
-  console.log(scheduledCourses);
   return (
     <div className="checklist" style={{ gridColumnStart: 2 }}>
       <div>
@@ -221,12 +219,19 @@ const Electives = ({ electives, scheduledCourses, addCourseScheduled }) => {
 };
 
 const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
+  console.log(scheduledCourses);
   const courseToDiv = (day, course) => {
     const startTimePercent =
       (course.startTime[0] + course.startTime[1] * (1 / 60) - 10) * (100 / 11);
     const endTimePercent =
       (course.endTime[0] + course.endTime[1] * (1 / 60) - 10) * (100 / 11);
-    console.log(startTimePercent, endTimePercent);
+    console.log(
+      course.name,
+      course.startTime,
+      course.endTime,
+      startTimePercent,
+      endTimePercent
+    );
     return (
       <div
         key={`${course.name}_${day}`}
@@ -264,7 +269,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         <h2>Wednesday</h2>
         <div className="dayCourses">
           {scheduledCourses
-            .filter(course => course.days.includes("M"))
+            .filter(course => course.days.includes("W"))
             .map(course => courseToDiv("Wednesday", course))}
         </div>
       </div>
