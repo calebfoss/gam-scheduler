@@ -34,12 +34,6 @@ class App extends React.Component {
     }));
     this.setState({ coursesTaken });
   }
-  get prereqs() {
-    const prereqs = [];
-    winterCourses.forEach(({prereqs}) => {
-      
-    })
-  }
   checkPrereqs(prereqs) {
     const { coursesTaken } = this.state;
     if (!Array.isArray(prereqs))
