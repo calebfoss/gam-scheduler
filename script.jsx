@@ -276,6 +276,14 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
             .map(course => courseToDiv("Thursday", course))}
         </div>
       </div>
+      <div id="Async" className="day">
+        <h2>Async</h2>
+        <div className="dayCourses">
+          {scheduledCourses
+            .filter(course => course.days.length === 0)
+            .map(course => courseToDiv("Async", course))}
+        </div>
+      </div>
     </div>
   );
 };
