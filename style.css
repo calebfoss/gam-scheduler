@@ -30,12 +30,11 @@ li {
 
 .checklist {
   height: 100%;
-  overflow: hidden;
 }
 
 ul {
-  height: 100%;
-  overflow: scroll;
+  height: 25%;
+  overflow: auto;
 }
 /*
 

@@ -18,6 +18,7 @@ class App extends React.Component {
         allCourses.push({ program, number, name });
       addPrereqs(prereqs);
     });
+    allCourses.sort((a, b) => a.number - b.number);
     const coursesTaken = allCourses.map(course => ({
       ...course,
       ...{ taken: false }
@@ -89,7 +90,7 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
           <li key={course.name}>
             <input
               type="checkbox"
-              id={name}
+              id={course.name}
               checked={course.taken}
               onChange={() => toggleCourseTaken(course)}
             />
@@ -111,7 +112,7 @@ const Requirements = ({ requiredCourses }) => {
       <ul>
         {requiredCourses.map(course => (
           <li key={course.name + course.section}>
-            <input type="checkbox" id={name} />
+            <input type="checkbox" id={course.name} />
             <label htmlFor={course.name}>
               {course.program} {course.number}: {course.name}
             </label>
@@ -142,7 +143,7 @@ const Electives = ({ electives }) => {
       <ul>
         {electives.map(course => (
           <li key={course.name + course.section}>
-            <input type="checkbox" id={name} />
+            <input type="checkbox" id={course.name} />
             <label htmlFor={course.name}>
               {course.program} {course.number}: {course.name}
             </label>
