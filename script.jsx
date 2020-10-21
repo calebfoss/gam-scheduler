@@ -19,26 +19,26 @@ class App extends React.Component {
       addPrereqs(prereqs);
     });
     allCourses.sort((a, b) => a.number - b.number);
-    const coursesTaken = allCourses.map(course => ({
+    const previousCourses = allCourses.map(course => ({
       ...course,
       ...{ taken: false }
     }));
-    this.state = { coursesTaken };
+    this.state = { previousCourses, scheduledCourses: [] };
   }
   toggleCourseTaken(toggleCourse) {
-    const coursesTaken = this.state.coursesTaken.map(otherCourse => ({
+    const previousCourses = this.state.previousCourses.map(otherCourse => ({
       ...otherCourse,
       ...{
         taken:
           otherCourse === toggleCourse ? !otherCourse.taken : otherCourse.taken
       }
     }));
-    this.setState({ coursesTaken });
+    this.setState({ previousCourses });
   }
   checkPrereqs(prereqs) {
-    const { coursesTaken } = this.state;
+    const { previousCourses } = this.state;
     if (!Array.isArray(prereqs))
-      return coursesTaken.some(
+      return previousCourses.some(
         course => course.taken && course.name === prereqs.name
       );
     else if (prereqs.length === 0) {
@@ -51,18 +51,18 @@ class App extends React.Component {
   render() {
     const availableCourses = winterCourses.filter(
       course =>
-        this.state.coursesTaken.every(
-          takenCourse =>
-            !takenCourse.taken ||
-            takenCourse.program !== course.program ||
-            takenCourse.number !== course.number
+        this.state.previousCourses.every(
+          previousCourse =>
+            !previousCourse.taken ||
+            previousCourse.program !== course.program ||
+            previousCourse.number !== course.number
         ) && this.checkPrereqs(course.prereqs)
     );
     return (
       <div id="app">
-        <h1>DePaul Game Design Scheduler</h1>
-        <Taken
-          coursesTaken={this.state.coursesTaken}
+        <h1 style={{ gridColumnEnd: 3 }}>DePaul Game Design Scheduler</h1>
+        <Previous
+          previousCourses={this.state.previousCourses}
           toggleCourseTaken={course => this.toggleCourseTaken(course)}
         />
         <Requirements
@@ -71,26 +71,13 @@ class App extends React.Component {
         <Electives
           electives={availableCourses.filter(({ required }) => !required)}
         />
-        <div id="schedule">
-          <div id="Monday" className="day">
-            <h2>Monday</h2>
-          </div>
-          <div id="Tuesday" className="day">
-            <h2>Tuesday</h2>
-          </div>
-          <div id="Wednesday" className="day">
-            <h2>Wednesday</h2>
-          </div>
-          <div id="Thursday" className="day">
-            <h2>Thursday</h2>
-          </div>
-        </div>
+        <Schedule scheduledCourses={this.state.schduledCourses} />
       </div>
     );
   }
 }
 
-const Taken = ({ coursesTaken, toggleCourseTaken }) => {
+const Previous = ({ previousCourses, toggleCourseTaken }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 1 }}>
       <div>
@@ -98,15 +85,15 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
         <p>Check each course that you have previously taken.</p>
       </div>
       <ul>
-        {coursesTaken.map(course => (
+        {previousCourses.map(course => (
           <li key={course.name}>
             <input
               type="checkbox"
-              id={course.name}
+              id={`${course.name}_previous`}
               checked={course.taken}
               onChange={() => toggleCourseTaken(course)}
             />
-            <label htmlFor={course.name}>
+            <label htmlFor={`${course.name}_previous`}>
               {course.program} {course.number}: {course.name}
             </label>
           </li>
@@ -126,22 +113,25 @@ const Requirements = ({ requiredCourses }) => {
       <ul>
         {requiredCourses.map(course => (
           <li key={course.name + course.section}>
-            <input type="checkbox" id={course.name} />
-            <label htmlFor={course.name}>
+            <input
+              type="checkbox"
+              id={`${course.name}_${course.section}_requirement`}
+            />
+            <label htmlFor={`${course.name}_${course.section}_requirement`}>
               {course.program} {course.number}: {course.name}
+              <br />
+              <span style={{ paddingLeft: "20px" }}>
+                {course.days.length
+                  ? `${course.days.join("")} ${course.startTime[0] %
+                      12}:${course.startTime[1].toString().padStart(2, 0)}${
+                      course.startTime[0] < 12 ? "AM" : "PM"
+                    } - ${course.endTime[0] %
+                      12}:${course.endTime[1].toString().padStart(2, 0)} ${
+                      course.endTime[0] < 12 ? "AM" : "PM"
+                    }`
+                  : "Async"}
+              </span>
             </label>
-            <br />
-            <span style={{ paddingLeft: "20px" }}>
-              {course.days.length
-                ? `${course.days.join("")} ${course.startTime[0] %
-                    12}:${course.startTime[1].toString().padStart(2, 0)}${
-                    course.startTime[0] < 12 ? "AM" : "PM"
-                  } - ${course.endTime[0] %
-                    12}:${course.endTime[1].toString().padStart(2, 0)} ${
-                    course.endTime[0] < 12 ? "AM" : "PM"
-                  }`
-                : "Async"}
-            </span>
           </li>
         ))}
       </ul>
@@ -159,25 +149,48 @@ const Electives = ({ electives }) => {
       <ul>
         {electives.map(course => (
           <li key={course.name + course.section}>
-            <input type="checkbox" id={course.name} />
-            <label htmlFor={course.name}>
+            <input
+              type="checkbox"
+              id={`${course.name}_${course.section}_elective`}
+            />
+            <label htmlFor={`${course.name}_${course.section}_elective`}>
               {course.program} {course.number}: {course.name}
+              <br />
+              <span style={{ paddingLeft: "20px" }}>
+                {course.days.length
+                  ? `${course.days.join("")} ${course.startTime[0] %
+                      12}:${course.startTime[1].toString().padStart(2, 0)}${
+                      course.startTime[0] < 12 ? "AM" : "PM"
+                    } - ${course.endTime[0] %
+                      12}:${course.endTime[1].toString().padStart(2, 0)} ${
+                      course.endTime[0] < 12 ? "AM" : "PM"
+                    }`
+                  : "Async"}
+              </span>
             </label>
-            <br />
-            <span style={{ paddingLeft: "20px" }}>
-              {course.days.length
-                ? `${course.days.join("")} ${course.startTime[0] %
-                    12}:${course.startTime[1].toString().padStart(2, 0)}${
-                    course.startTime[0] < 12 ? "AM" : "PM"
-                  } - ${course.endTime[0] %
-                    12}:${course.endTime[1].toString().padStart(2, 0)} ${
-                    course.endTime[0] < 12 ? "AM" : "PM"
-                  }`
-                : "Async"}
-            </span>
           </li>
         ))}
       </ul>
+    </div>
+  );
+};
+
+const Schedule = ({ scheduledCourses }) => {
+  return (
+    <div id="schedule">
+      <div id="Monday" className="day">
+        <h2>Monday</h2>
+        <div style={{position: relative, background: }}
+      </div>
+      <div id="Tuesday" className="day">
+        <h2>Tuesday</h2>
+      </div>
+      <div id="Wednesday" className="day">
+        <h2>Wednesday</h2>
+      </div>
+      <div id="Thursday" className="day">
+        <h2>Thursday</h2>
+      </div>
     </div>
   );
 };

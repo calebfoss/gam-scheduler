@@ -29,6 +29,7 @@ h1, h2 {
 
 li {
   list-style-type: none;
+  line-height: 40px;
 }
 
 .checklist {
