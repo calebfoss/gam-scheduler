@@ -74,8 +74,17 @@ class App extends React.Component {
         this.checkPrereqs(course.prereqs) &&
         !this.state.scheduledCourses.some(
           scheduledCourse =>
-            course.program === scheduledCourse.program &&
-            course.number === scheduledCourse.number
+            (course.program === scheduledCourse.program &&
+              course.number === scheduledCourse.number) ||
+            (course.days.some(day =>
+              scheduledCourse.days.some(schDay => schDay === day)
+            ) &&
+              (course.startTime[0] + course.startTime[1] * (1 / 60) >
+                scheduledCourse.endTime[0] +
+                  scheduledCourse.endTime[1] * (1 / 60) ||
+                course.endTime[0] + course.endTime[1] * (1 / 60) <
+                  scheduledCourse.startTime[0] +
+                    scheduledCourse.startTime[1] * (1 / 60)))
         )
     );
     return (
