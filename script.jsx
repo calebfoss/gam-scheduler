@@ -4,19 +4,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     const allCourses = [];
+    const addPrereqs = p => {
+      if (Array.isArray(p)) p.slice(1).forEach(sp => addPrereqs(sp));
+      else if (
+        !allCourses.some(({ name: otherName }) => p.name === otherName)
+      ) {
+        const { program, number, name } = p;
+        allCourses.push({ program, number, name });
+      }
+    };
     winterCourses.forEach(({ program, number, name, prereqs }) => {
       if (!allCourses.some(({ name: otherName }) => name === otherName))
         allCourses.push({ program, number, name });
-      prereqs.slice(1).forEach(prereq => {
-        if (
-          !allCourses.some(({ name: otherName }) => prereq.name === otherName)
-        )
-          allCourses.push({
-            program: prereq.program,
-            number: prereq.number,
-            name: prereq.name
-          });
-      });
+      addPrereqs(prereqs);
     });
     const coursesTaken = allCourses.map(course => ({
       ...course,
