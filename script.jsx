@@ -38,17 +38,14 @@ class App extends React.Component {
     const { coursesTaken } = this.state;
     if (!Array.isArray(prereqs))
       return coursesTaken.some(
-        course =>
-          course.taken &&
-          course.program === prereqs.program &&
-          course.number === prereqs.number
+        course => course.taken && course.name === prereqs.name
       );
     else if (prereqs.length === 0) {
       return true;
     } else if (prereqs[0] === "AND")
-      return prereqs.every(prereq => this.checkPrereqs(prereq));
+      return prereqs.slice(1).every(prereq => this.checkPrereqs(prereq));
     else if (prereqs[0] === "OR")
-      return prereqs.some(prereq => this.checkPrereqs(prereq));
+      return prereqs.slice(1).some(prereq => this.checkPrereqs(prereq));
   }
   render() {
     const availableCourses = winterCourses.filter(
