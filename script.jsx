@@ -61,7 +61,6 @@ class App extends React.Component {
     return (
       <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
-        <div id="topRow">
           <Taken
             coursesTaken={this.state.coursesTaken}
             toggleCourseTaken={course => this.toggleCourseTaken(course)}
@@ -74,7 +73,6 @@ class App extends React.Component {
           <Electives
             electives={availableCourses.filter(({ required }) => !required)}
           />
-        </div>
       </div>
     );
   }
@@ -82,7 +80,7 @@ class App extends React.Component {
 
 const Taken = ({ coursesTaken, toggleCourseTaken }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 1 }}>
+    <div className="checklist" style={{ gridColumnStart: 1, gridRowStart: 2 }}>
       <h2>Courses taken</h2>
       <p>Check each course that you have previously taken.</p>
       <ul>
@@ -106,7 +104,7 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
 
 const Requirements = ({ requiredCourses }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 2 }}>
+    <div className="checklist" style={{ gridColumnStart: 2, gridRowStart: 2 }}>
       <h2>Available Major Requirements</h2>
       <p>Check each course that you would like to take.</p>
       <ul>
@@ -137,7 +135,7 @@ const Requirements = ({ requiredCourses }) => {
 
 const Electives = ({ electives }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 3 }}>
+    <div className="checklist" style={{ gridColumnStart: 3, gridRowStart: 2 }}>
       <h2>Available GAM Electives</h2>
       <p>Check each course that you would like to take.</p>
       <ul>

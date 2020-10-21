@@ -4,32 +4,19 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#main {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 #app {
   height: 100%;
   display: grid;
+  grid-template-rows: 10% 45% 45%;
+  grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 li {
   list-style-type: none;
 }
 
-#topRow {
-  display: grid;
-  height: 50%;
-  grid-template-columns: 33.3% 33.3% 33.3%;
-}
-
 .checklist {
-  height: 100%;
+  overflow: hidden;
 }
 
 ul {
