@@ -236,7 +236,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       <div
         key={`${course.name}_${day}`}
         style={{
-          position: "relative",
+          position: "absolute",
           border: "2px solid black",
           top: startTimePercent + "%",
           height: endTimePercent - startTimePercent + "%"
