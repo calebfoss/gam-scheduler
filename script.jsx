@@ -35,18 +35,17 @@ class App extends React.Component {
     }));
     this.setState({ previousCourses });
   }
-  toggleCourseScheduled(toggleCourse) {
-    if (this.state.scheduledCourses.includes(toggleCourse))
-      this.setState({
-        scheduledCourses: this.state.scheduledCourses.filter(
-          course => course !== toggleCourse
-        )
-      });
-    else
-      this.setState({
-        scheduledCourses: this.state.scheduledCourses.concat(toggleCourse)
-      });
-    console.log(toggleCourse);
+  addCourseScheduled(course) {
+    this.setState({
+      scheduledCourses: this.state.scheduledCourses.concat(course)
+    });
+  }
+  removeCourseScheduled(course) {
+    this.setState({
+      scheduledCourses: this.state.scheduledCourses.filter(
+        otherCourse => course !== otherCourse
+      )
+    });
   }
   checkPrereqs(prereqs) {
     const { previousCourses } = this.state;
@@ -76,15 +75,16 @@ class App extends React.Component {
           scheduledCourse =>
             (course.program === scheduledCourse.program &&
               course.number === scheduledCourse.number) ||
-            (course.days.some(day =>
-              scheduledCourse.days.some(schDay => schDay === day)
-            ) &&
-              (course.startTime[0] + course.startTime[1] * (1 / 60) >
-                scheduledCourse.endTime[0] +
-                  scheduledCourse.endTime[1] * (1 / 60) ||
-                course.endTime[0] + course.endTime[1] * (1 / 60) <
-                  scheduledCourse.startTime[0] +
-                    scheduledCourse.startTime[1] * (1 / 60)))
+            course.days.some(
+              day =>
+                scheduledCourse.days.some(schDay => schDay === day) &&
+                (course.startTime[0] + course.startTime[1] * (1 / 60) <
+                  scheduledCourse.endTime[0] +
+                    scheduledCourse.endTime[1] * (1 / 60) &&
+                  course.endTime[0] + course.endTime[1] * (1 / 60) >
+                    scheduledCourse.startTime[0] +
+                      scheduledCourse.startTime[1] * (1 / 60))
+            )
         )
     );
     return (
@@ -97,18 +97,14 @@ class App extends React.Component {
         <Requirements
           requiredCourses={availableCourses.filter(({ required }) => required)}
           scheduledCourses={this.state.scheduledCourses}
-          toggleCourseScheduled={toggleCourse =>
-            this.toggleCourseScheduled(toggleCourse)
-          }
+          addCourseScheduled={course => this.addCourseScheduled(course)}
         />
         <Electives
           electives={availableCourses.filter(({ required }) => !required)}
           scheduledCourses={this.state.scheduledCourses}
-          toggleCourseScheduled={toggleCourse =>
-            this.toggleCourseScheduled(toggleCourse)
-          }
+          addCourseScheduled={course => this.addCourseScheduled(course)}
         />
-        <Schedule scheduledCourses={this.state.scheduledCourses} />
+        <Schedule scheduledCourses={this.state.scheduledCourses} removeCourseScheduled={course/>
       </div>
     );
   }
