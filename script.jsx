@@ -70,7 +70,13 @@ class App extends React.Component {
             !previousCourse.taken ||
             previousCourse.program !== course.program ||
             previousCourse.number !== course.number
-        ) && this.checkPrereqs(course.prereqs)
+        ) &&
+        this.checkPrereqs(course.prereqs) &&
+        !this.state.scheduledCourses.some(
+          scheduledCourse =>
+            course.program === scheduledCourse.program &&
+            course.number === scheduledCourse.number
+        )
     );
     return (
       <div id="app">
@@ -134,8 +140,8 @@ const Requirements = ({
   return (
     <div className="checklist" style={{ gridColumnStart: 2 }}>
       <div>
-        <h2>Available Major Requirements</h2>
-        <p>Check each course that you would like to take.</p>
+        <h2>Major Requirements</h2>
+        <p>Check a course to add it to your schedule.</p>
       </div>
       <ul>
         {requiredCourses.map(course => (
@@ -172,8 +178,8 @@ const Electives = ({ electives, scheduledCourses, toggleCourseScheduled }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 3 }}>
       <div>
-        <h2>Available GAM Electives</h2>
-        <p>Check each course that you would like to take.</p>
+        <h2>Electives</h2>
+        <p>Check a course to add it to your schedule.</p>
       </div>
       <ul>
         {electives.map(course => (
@@ -207,6 +213,26 @@ const Electives = ({ electives, scheduledCourses, toggleCourseScheduled }) => {
 };
 
 const Schedule = ({ scheduledCourses }) => {
+  const courseToDiv = (day, course) => {
+    const startTimePercent =
+      (course.startTime[0] + course.startTime[1] * (1 / 60) - 10) * (100 / 11);
+    const endTimePercent =
+      (course.endTime[0] + course.endTime[1] * (1 / 60) - 10) * (100 / 11);
+    console.log(startTimePercent, endTimePercent);
+    return (
+      <div
+        key={`${course.name}_${day}`}
+        style={{
+          position: "relative",
+          border: "2px solid black",
+          top: startTimePercent + "%",
+          height: endTimePercent - startTimePercent + "%"
+        }}
+      >
+        {course.program} {course.number}: {course.name}
+      </div>
+    );
+  };
   return (
     <div id="schedule">
       <div id="Monday" className="day">
@@ -214,27 +240,32 @@ const Schedule = ({ scheduledCourses }) => {
         <div className="dayCourses">
           {scheduledCourses
             .filter(course => course.days.includes("M"))
-            .map(course => {
-            const startTimeFloat = 
-              <div
-                style={{
-                  position: "relative",
-                  background: "red",
-                  top: (course.startTime[0] + (course.startTime[1] * (1/60)) - 10) * (100/11) + "%",
-                  height: "100%"
-                }}
-              >{course.program} {course.number}: {course.name}</div>
-          })}
+            .map(course => courseToDiv("Monday", course))}
         </div>
       </div>
       <div id="Tuesday" className="day">
         <h2>Tuesday</h2>
+        <div className="dayCourses">
+          {scheduledCourses
+            .filter(course => course.days.includes("Tu"))
+            .map(course => courseToDiv("Tuesday", course))}
+        </div>
       </div>
       <div id="Wednesday" className="day">
         <h2>Wednesday</h2>
+        <div className="dayCourses">
+          {scheduledCourses
+            .filter(course => course.days.includes("M"))
+            .map(course => courseToDiv("Wednesday", course))}
+        </div>
       </div>
       <div id="Thursday" className="day">
         <h2>Thursday</h2>
+        <div className="dayCourses">
+          {scheduledCourses
+            .filter(course => course.days.includes("Th"))
+            .map(course => courseToDiv("Thursday", course))}
+        </div>
       </div>
     </div>
   );
