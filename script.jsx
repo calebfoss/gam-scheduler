@@ -235,12 +235,17 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
     return (
       <div
         key={`${course.name}_${day}`}
-        style={{
-          position: "absolute",
-          border: "2px solid black",
-          top: startTimePercent + "%",
-          height: endTimePercent - startTimePercent + "%"
-        }}
+        style={
+          course.days.length
+            ? {
+                position: "absolute",
+                width: "100%",
+                border: "2px solid black",
+                top: startTimePercent + "%",
+                height: endTimePercent - startTimePercent + "%"
+              }
+            : { border: "2px solid black", width: "100%" }
+        }
       >
         {course.program} {course.number}: {course.name}
         <button onClick={() => removeCourseScheduled(course)}>X</button>
