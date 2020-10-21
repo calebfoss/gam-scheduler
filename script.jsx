@@ -61,18 +61,16 @@ class App extends React.Component {
     return (
       <div id="app">
         <h1>DePaul Game Design Scheduler</h1>
-          <Taken
-            coursesTaken={this.state.coursesTaken}
-            toggleCourseTaken={course => this.toggleCourseTaken(course)}
-          />
-          <Requirements
-            requiredCourses={availableCourses.filter(
-              ({ required }) => required
-            )}
-          />
-          <Electives
-            electives={availableCourses.filter(({ required }) => !required)}
-          />
+        <Taken
+          coursesTaken={this.state.coursesTaken}
+          toggleCourseTaken={course => this.toggleCourseTaken(course)}
+        />
+        <Requirements
+          requiredCourses={availableCourses.filter(({ required }) => required)}
+        />
+        <Electives
+          electives={availableCourses.filter(({ required }) => !required)}
+        />
       </div>
     );
   }
@@ -80,9 +78,11 @@ class App extends React.Component {
 
 const Taken = ({ coursesTaken, toggleCourseTaken }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 1, gridRowStart: 2 }}>
-      <h2>Courses taken</h2>
-      <p>Check each course that you have previously taken.</p>
+    <div className="checklist" style={{ gridColumnStart: 1 }}>
+      <div>
+        <h2>Courses taken</h2>
+        <p>Check each course that you have previously taken.</p>
+      </div>
       <ul>
         {coursesTaken.map(course => (
           <li key={course.name}>
@@ -104,9 +104,11 @@ const Taken = ({ coursesTaken, toggleCourseTaken }) => {
 
 const Requirements = ({ requiredCourses }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 2, gridRowStart: 2 }}>
-      <h2>Available Major Requirements</h2>
-      <p>Check each course that you would like to take.</p>
+    <div className="checklist" style={{ gridColumnStart: 2 }}>
+      <div>
+        <h2>Available Major Requirements</h2>
+        <p>Check each course that you would like to take.</p>
+      </div>
       <ul>
         {requiredCourses.map(course => (
           <li key={course.name + course.section}>
@@ -135,9 +137,10 @@ const Requirements = ({ requiredCourses }) => {
 
 const Electives = ({ electives }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 3, gridRowStart: 2 }}>
-      <h2>Available GAM Electives</h2>
-      <p>Check each course that you would like to take.</p>
+    <div className="checklist" style={{ gridColumnStart: 3 }}>
+      <div><h2>Available GAM Electives</h2>
+        <p>Check each course that you would like to take.</p>
+      </div>
       <ul>
         {electives.map(course => (
           <li key={course.name + course.section}>
