@@ -61,6 +61,7 @@ ul {
 }
 
 .dayCourses {
+  height: 80%;
   grid-row-start: 2
 }
 
