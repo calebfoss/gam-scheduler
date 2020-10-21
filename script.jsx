@@ -104,7 +104,10 @@ class App extends React.Component {
           scheduledCourses={this.state.scheduledCourses}
           addCourseScheduled={course => this.addCourseScheduled(course)}
         />
-        <Schedule scheduledCourses={this.state.scheduledCourses} removeCourseScheduled={course/>
+        <Schedule
+          scheduledCourses={this.state.scheduledCourses}
+          removeCourseScheduled={course => this.removeCourseScheduled(course)}
+        />
       </div>
     );
   }
@@ -139,7 +142,7 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
 const Requirements = ({
   requiredCourses,
   scheduledCourses,
-  toggleCourseScheduled
+  addCourseScheduled
 }) => {
   console.log(scheduledCourses);
   return (
@@ -155,7 +158,7 @@ const Requirements = ({
               type="checkbox"
               id={`${course.name}_${course.section}_requirement`}
               checked={scheduledCourses.includes(course)}
-              onChange={() => toggleCourseScheduled(course)}
+              onChange={() => addCourseScheduled(course)}
             />
             <label htmlFor={`${course.name}_${course.section}_requirement`}>
               {course.program} {course.number}: {course.name}
@@ -179,7 +182,7 @@ const Requirements = ({
   );
 };
 
-const Electives = ({ electives, scheduledCourses, toggleCourseScheduled }) => {
+const Electives = ({ electives, scheduledCourses, addCourseScheduled }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 3 }}>
       <div>
@@ -193,7 +196,7 @@ const Electives = ({ electives, scheduledCourses, toggleCourseScheduled }) => {
               type="checkbox"
               id={`${course.name}_${course.section}_elective`}
               checked={scheduledCourses.includes(course)}
-              onChange={() => toggleCourseScheduled(course)}
+              onChange={() => addCourseScheduled(course)}
             />
             <label htmlFor={`${course.name}_${course.section}_elective`}>
               {course.program} {course.number}: {course.name}
@@ -217,7 +220,7 @@ const Electives = ({ electives, scheduledCourses, toggleCourseScheduled }) => {
   );
 };
 
-const Schedule = ({ scheduledCourses }) => {
+const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
   const courseToDiv = (day, course) => {
     const startTimePercent =
       (course.startTime[0] + course.startTime[1] * (1 / 60) - 10) * (100 / 11);
@@ -235,6 +238,7 @@ const Schedule = ({ scheduledCourses }) => {
         }}
       >
         {course.program} {course.number}: {course.name}
+        <button onClick={() => removeCourseScheduled(course)}>X</button>
       </div>
     );
   };
