@@ -28,6 +28,10 @@ h1, h2 {
   text-align: center;
 }
 
+h2, h1 {
+  margin: 5px;
+}
+
 li {
   list-style-type: none;
   line-height: 40px;
@@ -59,11 +63,11 @@ ul {
 }
 
 .guide {
-  grid-template-rows: 20% 7.27% 7.27% 7.27% 7.27% 7.27% 7.27% 7.27% 7.27% 7.27% 7.27% 7.27%;
+  grid-template-rows: 15% auto auto auto auto auto auto auto auto auto auto auto;
 }
 
 .day {
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 15% 85%;
   border: 2px solid black;
   border-radius: 5px;
 }
