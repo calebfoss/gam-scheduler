@@ -30,6 +30,11 @@ h2 {
   margin: 5px;
 }
 
+h2 {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+
 li {
   list-style-type: none;
   line-height: 30px;
@@ -74,7 +79,7 @@ ul {
 
 .day {
   grid-template-rows: 15% 85%;
-  border: 2px solid black;
+  border: 2px solid grey;
   border-radius: 5px;
 }
 
@@ -93,10 +98,11 @@ ul {
 
 .scheduledCourse .courseName {
   display: inline-block;
-  width: 90%;
+  width: 85%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  vertical-align: middle;
 }
 
 button {
@@ -116,6 +122,7 @@ button {
   height: 20px;
   border-radius: 10px;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
+  vertical-align: middle;
 }
