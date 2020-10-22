@@ -88,7 +88,7 @@ class App extends React.Component {
     );
     return (
       <div id="app">
-        <h1 style={{ gridColumnEnd: 3 }}>DePaul Game Design Scheduler</h1>
+        <h1 style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>DePaul Game Design Scheduler</h1>
         <Previous
           previousCourses={this.state.previousCourses}
           toggleCourseTaken={course => this.toggleCourseTaken(course)}
@@ -153,15 +153,13 @@ const CourseOptions = ({
       <ul>
         {courses.map(course => (
           <li key={course.name + course.section}>
-            <button
+            {course.program} {course.number}: {course.name}<button
               onClick={() => addCourseScheduled(course)}
               className="addButton"
             >
               +
-            </button>{" "}
-            {course.program} {course.number}: {course.name}
-            <br />
-            <span className="classInfo">
+            </button>
+            <div className="classInfo">
               {course.days.length
                 ? `${course.days.join("")} ${course.startTime[0] %
                     12}:${course.startTime[1].toString().padStart(2, 0)}${
@@ -171,7 +169,7 @@ const CourseOptions = ({
                     course.endTime[0] < 12 ? "AM" : "PM"
                   }`
                 : "Async"}
-            </span>
+            </div>
           </li>
         ))}
       </ul>

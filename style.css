@@ -27,16 +27,12 @@ body {
 h1,
 h2 {
   text-align: center;
-}
-
-h2,
-h1 {
   margin: 5px;
 }
 
 li {
   list-style-type: none;
-  line-height: 40px;
+  line-height: 30px;
 }
 
 .checklist {
@@ -44,6 +40,9 @@ li {
   grid-template-rows: 15% 85%;
   grid-row-start: 2;
   grid-row-end: 3;
+  margin: 5px;
+  border: 2px solid grey;
+  border-radius: 5px;
 }
 
 ul {
@@ -52,7 +51,7 @@ ul {
 }
 
 .classInfo {
-  text-indent: 40px;
+  padding-left: 15%;
 }
 
 #schedule {
@@ -94,7 +93,7 @@ ul {
 
 .scheduledCourse .courseName {
   display: inline-block;
-  width: 80%;
+  width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
