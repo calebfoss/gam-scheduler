@@ -88,7 +88,9 @@ class App extends React.Component {
     );
     return (
       <div id="app">
-        <h1 style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>DePaul Game Design Scheduler</h1>
+        <h1 style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>
+          DePaul Game Design Scheduler
+        </h1>
         <Previous
           previousCourses={this.state.previousCourses}
           toggleCourseTaken={course => this.toggleCourseTaken(course)}
@@ -153,7 +155,8 @@ const CourseOptions = ({
       <ul>
         {courses.map(course => (
           <li key={course.name + course.section}>
-            {course.program} {course.number}: {course.name}<button
+            {course.program} {course.number}: {course.name}
+            <button
               onClick={() => addCourseScheduled(course)}
               className="addButton"
             >
@@ -191,6 +194,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         style={
           course.days.length
             ? {
+                position: "absolute",
                 top: startTimePercent + "%",
                 height: endTimePercent - startTimePercent + "%",
                 backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
