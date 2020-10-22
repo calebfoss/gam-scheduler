@@ -254,6 +254,12 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
   };
   return (
     <div id="schedule">
+      <div className="guide">
+        <div></div>
+        {new Array(11).fill(0).map((_, i) => (
+          <div key={`hour_${i + 10}`}>{(i + 9) % 12 + 1} {i < 2 ? "AM"</div>
+        ))}
+      </div>
       <div id="Monday" className="day">
         <h2>Monday</h2>
         <div className="dayCourses">
