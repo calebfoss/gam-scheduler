@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 html,
@@ -24,11 +24,13 @@ body {
   grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
 }
 
-h2, h1 {
+h2,
+h1 {
   margin: 5px;
 }
 
@@ -57,7 +59,8 @@ ul {
   grid-template-columns: 5% 19% 19% 19% 19% 19%;
 }
 
-.guide, .day {
+.guide,
+.day {
   display: grid;
   margin: 5px;
 }
@@ -77,10 +80,17 @@ ul {
   height: 80%;
   padding: 0;
   margin: 0;
-  grid-row-start: 2
+  grid-row-start: 2;
+}
+
+.scheduledCourse {
+  position: absolute;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 button {
-
   margin-left: 10px;
 }

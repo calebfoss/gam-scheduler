@@ -225,26 +225,22 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       (course.startTime[0] + course.startTime[1] * (1 / 60) - 10) * (100 / 11);
     const endTimePercent =
       (course.endTime[0] + course.endTime[1] * (1 / 60) - 10) * (100 / 11);
-    console.log(
-      course.name,
-      course.startTime,
-      course.endTime,
-      startTimePercent,
-      endTimePercent
-    );
     return (
       <div
         key={`${course.name}_${day}`}
+        className="scheduledCourse"
         style={
           course.days.length
             ? {
-                position: "absolute",
-                width: "100%",
-                border: "2px solid black",
                 top: startTimePercent + "%",
-                height: endTimePercent - startTimePercent + "%"
+                height: endTimePercent - startTimePercent + "%",
+                backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
+                  36},75%,80%,0.25)`
               }
-            : { border: "2px solid black", width: "100%" }
+            : {
+                backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
+                  36},75%,80%,0.25)`
+              }
         }
       >
         {course.program} {course.number}: {course.name}
@@ -257,7 +253,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       <div className="guide">
         <div></div>
         {new Array(11).fill(0).map((_, i) => (
-          <div key={`hour_${i + 10}`} style={{textAlign: "right"}}>
+          <div key={`hour_${i + 10}`} style={{ textAlign: "right" }}>
             {((i + 9) % 12) + 1} {i < 2 ? "AM" : "PM"}
           </div>
         ))}
