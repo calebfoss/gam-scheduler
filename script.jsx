@@ -93,13 +93,15 @@ class App extends React.Component {
           previousCourses={this.state.previousCourses}
           toggleCourseTaken={course => this.toggleCourseTaken(course)}
         />
-        <Requirements
-          requiredCourses={availableCourses.filter(({ required }) => required)}
+        <CourseOptions
+          title="Major Requirements"
+          courses={availableCourses.filter(({ required }) => required)}
           scheduledCourses={this.state.scheduledCourses}
           addCourseScheduled={course => this.addCourseScheduled(course)}
         />
-        <Electives
-          electives={availableCourses.filter(({ required }) => !required)}
+        <CourseOptions
+          title="Electives"
+          courses={availableCourses.filter(({ required }) => !required)}
           scheduledCourses={this.state.scheduledCourses}
           addCourseScheduled={course => this.addCourseScheduled(course)}
         />
@@ -117,7 +119,6 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
     <div className="checklist" style={{ gridColumnStart: 1 }}>
       <div>
         <h2>Courses taken</h2>
-        <p>Check each course that you have previously taken.</p>
       </div>
       <ul>
         {previousCourses.map(course => (
@@ -138,79 +139,39 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
   );
 };
 
-const Requirements = ({
-  requiredCourses,
+const CourseOptions = ({
+  title,
+  courses,
   scheduledCourses,
   addCourseScheduled
 }) => {
   return (
-    <div className="checklist" style={{ gridColumnStart: 2 }}>
+    <div className="checklist">
       <div>
-        <h2>Major Requirements</h2>
-        <p>Check a course to add it to your schedule.</p>
+        <h2>{title}</h2>
       </div>
       <ul>
-        {requiredCourses.map(course => (
+        {courses.map(course => (
           <li key={course.name + course.section}>
-            <input
-              type="checkbox"
-              id={`${course.name}_${course.section}_requirement`}
-              checked={scheduledCourses.includes(course)}
-              onChange={() => addCourseScheduled(course)}
-            />
-            <label htmlFor={`${course.name}_${course.section}_requirement`}>
-              {course.program} {course.number}: {course.name}
-              <br />
-              <span style={{ paddingLeft: "20px" }}>
-                {course.days.length
-                  ? `${course.days.join("")} ${course.startTime[0] %
-                      12}:${course.startTime[1].toString().padStart(2, 0)}${
-                      course.startTime[0] < 12 ? "AM" : "PM"
-                    } - ${course.endTime[0] %
-                      12}:${course.endTime[1].toString().padStart(2, 0)} ${
-                      course.endTime[0] < 12 ? "AM" : "PM"
-                    }`
-                  : "Async"}
-              </span>
-            </label>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const Electives = ({ electives, scheduledCourses, addCourseScheduled }) => {
-  return (
-    <div className="checklist" style={{ gridColumnStart: 3 }}>
-      <div>
-        <h2>Electives</h2>
-        <p>Check a course to add it to your schedule.</p>
-      </div>
-      <ul>
-        {electives.map(course => (
-          <li key={course.name + course.section}>
-            <input
-              type="checkbox"
-              id={`${course.name}_${course.section}_elective`}
-              checked={scheduledCourses.includes(course)}
-              onChange={() => addCourseScheduled(course)}
-            />
-            <label htmlFor={`${course.name}_${course.section}_elective`}>
-              {course.program} {course.number}: {course.name}
-              <br />
-              <span style={{ paddingLeft: "20px" }}>
-                {course.days.length
-                  ? `${course.days.join("")} ${course.startTime[0] %
-                      12}:${course.startTime[1].toString().padStart(2, 0)}${
-                      course.startTime[0] < 12 ? "AM" : "PM"
-                    } - ${course.endTime[0] %
-                      12}:${course.endTime[1].toString().padStart(2, 0)} ${
-                      course.endTime[0] < 12 ? "AM" : "PM"
-                    }`
-                  : "Async"}
-              </span>
-            </label>
+            <button
+              onClick={() => addCourseScheduled(course)}
+              className="addButton"
+            >
+              +
+            </button>{" "}
+            {course.program} {course.number}: {course.name}
+            <br />
+            <span className="classInfo">
+              {course.days.length
+                ? `${course.days.join("")} ${course.startTime[0] %
+                    12}:${course.startTime[1].toString().padStart(2, 0)}${
+                    course.startTime[0] < 12 ? "AM" : "PM"
+                  } - ${course.endTime[0] %
+                    12}:${course.endTime[1].toString().padStart(2, 0)} ${
+                    course.endTime[0] < 12 ? "AM" : "PM"
+                  }`
+                : "Async"}
+            </span>
           </li>
         ))}
       </ul>
@@ -243,8 +204,15 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
               }
         }
       >
-        <div className="courseName">{course.program} {course.number}: {course.name}</div>
-        <button className="removeButton" onClick={() => removeCourseScheduled(course)}>X</button>
+        <div className="courseName">
+          {course.program} {course.number}: {course.name}
+        </div>
+        <button
+          className="removeButton"
+          onClick={() => removeCourseScheduled(course)}
+        >
+          X
+        </button>
       </div>
     );
   };

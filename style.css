@@ -41,7 +41,7 @@ li {
 
 .checklist {
   display: grid;
-  grid-template-rows: 25% 75%;
+  grid-template-rows: 15% 85%;
   grid-row-start: 2;
   grid-row-end: 3;
 }
@@ -49,6 +49,10 @@ li {
 ul {
   overflow: auto;
   grid-row-start: 2;
+}
+
+.classInfo {
+  text-indent: 40px;
 }
 
 #schedule {
@@ -99,11 +103,20 @@ ul {
 button {
   border: none;
   text-decoration: none;
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
+.addButton,
 .removeButton {
   margin-left: 5px;
   font-size: 16px;
   padding: 0;
-  border-radius: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;
 }
