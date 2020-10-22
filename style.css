@@ -86,11 +86,24 @@ ul {
 .scheduledCourse {
   position: absolute;
   width: 100%;
+}
+
+.scheduledCourse .courseName {
+  display: inline-block;
+  width: 80%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 button {
-  margin-left: 10px;
+  border: none;
+  text-decoration: none;
+}
+
+.removeButton {
+  margin-left: 5px;
+  font-size: 16px;
+  padding: 0;
+  border-radius: 8px;
 }

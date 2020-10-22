@@ -243,8 +243,8 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
               }
         }
       >
-        {course.program} {course.number}: {course.name}
-        <button onClick={() => removeCourseScheduled(course)}>X</button>
+        <div className="courseName">{course.program} {course.number}: {course.name}</div>
+        <button className="removeButton" onClick={() => removeCourseScheduled(course)}>X</button>
       </div>
     );
   };
