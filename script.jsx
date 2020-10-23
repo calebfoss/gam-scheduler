@@ -23,7 +23,7 @@ class App extends React.Component {
       ...course,
       ...{ taken: false }
     }));
-    this.state = { previousCourses, scheduledCourses: [] };
+    this.state = { previousCourses, scheduledCourses: [], year: "2021" };
   }
   toggleCourseTaken(toggleCourse) {
     const previousCourses = this.state.previousCourses.map(otherCourse => ({
@@ -88,22 +88,44 @@ class App extends React.Component {
     );
     return (
       <div id="app">
-        <h1 style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>
-          DePaul Game Design Scheduler
-        </h1>
+        <div style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>
+          <h1>DePaul Game Design Scheduler</h1>
+          <label
+            htmlFor="yearSelect"
+            style={{ marginLeft: "5px", marginRight: "5px" }}
+          >
+            What year did you start at DePaul?
+          </label>
+          <select
+            id="yearSelect"
+            onChange={e => this.setState({ year: e.target.value })}
+            value={this.state.year}
+          >
+            <option value="2021">2020/21</option>
+            <option value="1920">2019/20</option>
+            <option value="1819">2018/19</option>
+            <option value="1718">2017/18</option>
+            <option value="1617">2016/17</option>
+          </select>
+        </div>
+
         <Previous
           previousCourses={this.state.previousCourses}
           toggleCourseTaken={course => this.toggleCourseTaken(course)}
         />
         <CourseOptions
           title="Major Requirements"
-          courses={availableCourses.filter(({ required }) => required)}
+          courses={availableCourses.filter(
+            ({ required }) => required[this.state.year]
+          )}
           scheduledCourses={this.state.scheduledCourses}
           addCourseScheduled={course => this.addCourseScheduled(course)}
         />
         <CourseOptions
           title="Electives"
-          courses={availableCourses.filter(({ required }) => !required)}
+          courses={availableCourses.filter(
+            ({ required }) => !required[this.state.year]
+          )}
           scheduledCourses={this.state.scheduledCourses}
           addCourseScheduled={course => this.addCourseScheduled(course)}
         />
