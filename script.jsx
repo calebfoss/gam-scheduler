@@ -188,14 +188,14 @@ const CourseOptions = ({
             </button>
             <div className="classInfo">
               {course.days.length
-                ? `${course.days.join("")} ${course.startTime[0] %
+                ? `${course.days.join("")} ${course.startTime[0] === 12 ? 12 : course.startTime[0] %
                     12}:${course.startTime[1].toString().padStart(2, 0)}${
                     course.startTime[0] < 12 ? "AM" : "PM"
-                  } - ${course.endTime[0] %
+                  } - ${course.endTime[0] === 12 ? 12 :course.endTime[0] %
                     12}:${course.endTime[1].toString().padStart(2, 0)} ${
                     course.endTime[0] < 12 ? "AM" : "PM"
                   }`
-                : "Async"}{" "}
+                : "Async"}
               <a
                 href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.program}&CatalogNbr=${course.number}`}
                 target="_"
