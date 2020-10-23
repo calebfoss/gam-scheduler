@@ -153,3 +153,11 @@ const year_1617 = [
   "<span>GAM 394</span> Game Development Project I ",
   "<span>GAM 395</span> Game Development Project II "
 ];
+
+const prevYears = [year_1920, year_1819, year_1718, year_1617];
+
+prevYears.forEach(year => {
+  const extras = year.filter(course =>
+    year_2021.every(otherCourse => course.substring(6, course.indexOf("</")) != otherCourse)
+  );
+});
