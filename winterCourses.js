@@ -11,9 +11,6 @@
     endTime: [],
     required: true
   },
-  */
-
-const winterCourses = [
   {
     program: "ANI",
     number: 101,
@@ -176,6 +173,9 @@ const winterCourses = [
       "2021": false
     }
   },
+  */
+
+const winterCourses = [
   {
     program: "GD",
     number: 105,
