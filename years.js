@@ -156,8 +156,12 @@ const year_1617 = [
 
 const prevYears = [year_1920, year_1819, year_1718, year_1617];
 
-prevYears.forEach(year => {
-  const extras = year.filter(course =>
-    year_2021.every(otherCourse => course.substring(6, course.indexOf("</")) != otherCourse)
+prevYears.forEach((year, i) => {
+  console.log(`Year ${19 - i}${20 - i}`);
+  const courseNames = year.map(course => course.substring(6, course.indexOf("</")));
+  console.log(year_2021.filter(course => !courseNames.includes(course)))
+  const extras = courseNames.filter(course =>
+    year_2021.every(otherCourse => course != otherCourse)
   );
+  console.log(extras);
 });

@@ -24,7 +24,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GD",
@@ -36,7 +42,13 @@ const winterCourses = [
     days: ["Th"],
     startTime: [10, 0],
     endTime: [13, 15],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GD",
@@ -48,7 +60,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GD",
@@ -60,7 +78,13 @@ const winterCourses = [
     days: ["Th"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -72,7 +96,13 @@ const winterCourses = [
     days: ["Tu"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: true
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -84,7 +114,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "IT",
@@ -100,7 +136,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "IT",
@@ -116,7 +158,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [11, 50],
     endTime: [13, 20],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "IT",
@@ -132,7 +180,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -144,7 +198,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -156,7 +216,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [9, 40],
     endTime: [11, 10],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -168,7 +234,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -180,7 +252,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [11, 50],
     endTime: [13, 20],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -192,7 +270,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -204,7 +288,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -216,7 +306,13 @@ const winterCourses = [
     days: ["W"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "ANI",
