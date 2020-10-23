@@ -615,9 +615,9 @@ const winterCourses = [
     name: "Playgramming",
     credits: 4,
     prereqs: [],
-    days: [],
-    startTime: [],
-    endTime: [],
+    days: ["M", "W"],
+    startTime: [10, 10],
+    endTime: [11, 40],
     required: {
       "1617": true,
       "1718": true,
@@ -651,9 +651,9 @@ const winterCourses = [
     name: "Game Development I",
     credits: 4,
     prereqs: [],
-    days: [],
-    startTime: [],
-    endTime: [],
+    days: ["Th"],
+    startTime: [17, 45],
+    endTime: [21, 0],
     required: {
       "1617": true,
       "1718": true,
@@ -775,9 +775,9 @@ const winterCourses = [
       },
       { program: "CSC", number: 243, name: "Python for Programers" }
     ],
-    days: [],
-    startTime: [],
-    endTime: [],
+    days: ["M", "W"],
+    startTime: [11, 50],
+    endTime: [13, 20],
     required: {
       "1617": true,
       "1718": true,

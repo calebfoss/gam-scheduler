@@ -61,13 +61,7 @@ ul {
 }
 
 .classInfo {
-  width: 100%;
   padding-left: 15%;
-  text-align: justify;
-}
-
-a {
-  margin-left: auto;
 }
 
 #schedule {
@@ -103,7 +97,6 @@ a {
 }
 
 .scheduledCourse {
-  
   width: 100%;
 }
 
