@@ -89,24 +89,26 @@ class App extends React.Component {
     return (
       <div id="app">
         <div style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>
-          <h1>DePaul Game Design Scheduler</h1>
-          <label
-            htmlFor="yearSelect"
-            style={{ marginLeft: "5px", marginRight: "5px" }}
-          >
-            What year did you start at DePaul?
-          </label>
-          <select
-            id="yearSelect"
-            onChange={e => this.setState({ year: e.target.value })}
-            value={this.state.year}
-          >
-            <option value="2021">2020/21</option>
-            <option value="1920">2019/20</option>
-            <option value="1819">2018/19</option>
-            <option value="1718">2017/18</option>
-            <option value="1617">2016/17</option>
-          </select>
+          <h1>DePaul Game Design Scheduler: Winter 2021</h1>
+          <div style={{ textAlign: "center" }}>
+            <label
+              htmlFor="yearSelect"
+              style={{ marginLeft: "5px", marginRight: "5px" }}
+            >
+              What year did you start at DePaul?
+            </label>
+            <select
+              id="yearSelect"
+              onChange={e => this.setState({ year: e.target.value })}
+              value={this.state.year}
+            >
+              <option value="2021">2020/21</option>
+              <option value="1920">2019/20</option>
+              <option value="1819">2018/19</option>
+              <option value="1718">2017/18</option>
+              <option value="1617">2016/17</option>
+            </select>
+          </div>
         </div>
 
         <Previous
@@ -114,7 +116,7 @@ class App extends React.Component {
           toggleCourseTaken={course => this.toggleCourseTaken(course)}
         />
         <CourseOptions
-          title="Major Requirements"
+          title="Major requirements"
           courses={availableCourses.filter(
             ({ required }) => required[this.state.year]
           )}
@@ -142,7 +144,7 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
   return (
     <div className="checklist" style={{ gridColumnStart: 1 }}>
       <div>
-        <h2>Courses taken</h2>
+        <h2>Courses you have already taken</h2>
       </div>
       <ul>
         {previousCourses.map(course => (
@@ -193,7 +195,13 @@ const CourseOptions = ({
                     12}:${course.endTime[1].toString().padStart(2, 0)} ${
                     course.endTime[0] < 12 ? "AM" : "PM"
                   }`
-                : "Async"}
+                : "Async"}{" "}
+              <a
+                href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.program}&CatalogNbr=${course.number}`}
+                target="_"
+              >
+                More info
+              </a>
             </div>
           </li>
         ))}
