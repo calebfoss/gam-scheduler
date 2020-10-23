@@ -15,6 +15,168 @@
 
 const winterCourses = [
   {
+    program: "ANI",
+    number: 101,
+    section: 201,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [11, 20],
+    endTime: [12, 50],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 202,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [13, 0],
+    endTime: [14, 30],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 501,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 502,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [15, 10],
+    endTime: [16, 40],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 503,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [10, 10],
+    endTime: [11, 40],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 504,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [11, 50],
+    endTime: [13, 20],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 505,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu", "Th"],
+    startTime: [15, 10],
+    endTime: [16, 40],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 506,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [11, 50],
+    endTime: [13, 20],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
+    program: "ANI",
+    number: 101,
+    section: 801,
+    name: "Animation for Non-Majors",
+    credits: 4,
+    prereqs: [],
+    days: ["Tu"],
+    startTime: [18, 0],
+    endTime: [21, 15],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": false
+    }
+  },
+  {
     program: "GD",
     number: 105,
     section: 501,
@@ -324,7 +486,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "ANI",
@@ -336,7 +504,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [11, 50],
     endTime: [13, 20],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "ANI",
@@ -348,7 +522,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "ANI",
@@ -360,7 +540,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -372,7 +558,13 @@ const winterCourses = [
     days: ["Tu"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "ANI",
@@ -387,7 +579,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "ANI",
@@ -402,7 +600,13 @@ const winterCourses = [
     days: ["Th"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -414,7 +618,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -426,7 +636,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -438,7 +654,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -463,7 +685,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [11, 50],
     endTime: [13, 20],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -475,7 +703,13 @@ const winterCourses = [
     days: ["W"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -491,7 +725,13 @@ const winterCourses = [
     days: ["M"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -506,7 +746,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -532,7 +778,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -547,7 +799,13 @@ const winterCourses = [
     days: ["M"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -563,7 +821,13 @@ const winterCourses = [
     days: ["M"],
     startTime: [13, 30],
     endTime: [16, 45],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -591,7 +855,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -607,7 +877,13 @@ const winterCourses = [
     days: ["Th"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -623,7 +899,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -639,7 +921,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [15, 10],
     endTime: [16, 40],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -663,7 +951,13 @@ const winterCourses = [
     days: ["M"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -687,7 +981,13 @@ const winterCourses = [
     days: [],
     startTime: [],
     endTime: [],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -708,7 +1008,13 @@ const winterCourses = [
     days: ["M"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -724,7 +1030,13 @@ const winterCourses = [
     days: ["M", "W"],
     startTime: [13, 30],
     endTime: [15, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -740,7 +1052,13 @@ const winterCourses = [
     days: ["W"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -759,7 +1077,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: true
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -771,7 +1095,13 @@ const winterCourses = [
     days: ["Tu", "Th"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   },
   {
     program: "GAM",
@@ -783,6 +1113,12 @@ const winterCourses = [
     days: ["Tu"],
     startTime: [17, 45],
     endTime: [21, 0],
-    required: false
+    required: {
+      "1617": false,
+      "1718": false,
+      "1819": false,
+      "1920": false,
+      "2021": false
+    }
   }
 ];
