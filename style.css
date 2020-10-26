@@ -79,12 +79,21 @@ ul {
 }
 
 .guide {
-  align-items: end;
-  grid-template-rows: 15% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73%;
+  position: relative;
+  /*   align-items: end; */
+  /*   grid-template-rows: 15% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73%; */
 }
 
 .time {
+  position: absolute;
+  width: 100%;
   text-align: right;
+  vertical-align: middle;
+  transform: translate(0, -50%);
+}
+
+.timeLine {
+  position: absolute;
 }
 
 .day {
@@ -95,7 +104,7 @@ ul {
 
 .dayCourses {
   position: relative;
-  height: 80%;
+  height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
