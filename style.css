@@ -80,7 +80,7 @@ ul {
 
 .guide {
   align-items: end;
-  grid-template-rows: 15% auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: 15% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73% 7.73%;
 }
 
 .time {
