@@ -79,7 +79,12 @@ ul {
 }
 
 .guide {
-  grid-template-rows: 15% auto auto auto auto auto auto auto auto auto auto auto;
+  align-items: end;
+  grid-template-rows: 15% auto auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.time {
+  text-align: right;
 }
 
 .day {
