@@ -94,6 +94,11 @@ ul {
 
 .timeLine {
   position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid grey;
+  border-bottom: none;
 }
 
 .day {

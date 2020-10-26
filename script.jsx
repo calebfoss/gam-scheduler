@@ -224,13 +224,6 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       (course.startTime[0] + course.startTime[1] * (1 / 60) - 10) * (100 / 11);
     const endTimePercent =
       (course.endTime[0] + course.endTime[1] * (1 / 60) - 10) * (100 / 11);
-    console.log(
-      course.name,
-      course.startTime,
-      course.endTime,
-      startTimePercent,
-      endTimePercent
-    );
     return (
       <div
         key={`${course.name}_${day}`}
@@ -242,11 +235,11 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
                 top: startTimePercent + "%",
                 height: endTimePercent - startTimePercent + "%",
                 backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
-                  36},75%,80%,0.25)`
+                  36},75%,95%,0.85)`
               }
             : {
                 backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
-                  36},75%,80%,0.25)`
+                  36},75%,95%,0.85)`
               }
         }
       >
@@ -262,7 +255,15 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       </div>
     );
   };
-  const lines = new Array(11).fill(0).map((_, i) => <hr className="timeLine" style={{top: i * (100/11) + "%"}}/>);
+  const lines = new Array(11)
+    .fill(0)
+    .map((_, i) => (
+      <hr
+        className="timeLine"
+        key={"hr_" + i}
+        style={{ top: i * (100 / 11) + "%" }}
+      />
+    ));
   return (
     <div id="schedule">
       <div className="guide">
@@ -289,6 +290,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       <div id="Tuesday" className="day">
         <h2>Tuesday</h2>
         <div className="dayCourses">
+          {lines}
           {scheduledCourses
             .filter(course => course.days.includes("Tu"))
             .map(course => courseToDiv("Tuesday", course))}
@@ -297,6 +299,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       <div id="Wednesday" className="day">
         <h2>Wednesday</h2>
         <div className="dayCourses">
+          {lines}
           {scheduledCourses
             .filter(course => course.days.includes("W"))
             .map(course => courseToDiv("Wednesday", course))}
@@ -305,6 +308,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
       <div id="Thursday" className="day">
         <h2>Thursday</h2>
         <div className="dayCourses">
+          {lines}
           {scheduledCourses
             .filter(course => course.days.includes("Th"))
             .map(course => courseToDiv("Thursday", course))}
