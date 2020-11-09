@@ -628,6 +628,24 @@ const winterCourses = [
   },
   {
     program: "GAM",
+    number: 240,
+    section: 501,
+    name: "Playgramming",
+    credits: 4,
+    prereqs: [],
+    days: ["M", "W"],
+    startTime: [13, 30],
+    endTime: [15, 0],
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
+  },
+  {
+    program: "GAM",
     number: 244,
     section: 501,
     name: "Game Development I",
