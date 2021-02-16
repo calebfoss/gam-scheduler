@@ -1,10 +1,11 @@
-/* globals React, ReactDOM, winterCourses */
+/* globals React, ReactDOM, springCourses */
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     const allCourses = [];
     const addPrereqs = p => {
+      console.log(p);
       if (Array.isArray(p)) p.slice(1).forEach(sp => addPrereqs(sp));
       else if (
         !allCourses.some(({ name: otherName }) => p.name === otherName)
@@ -13,7 +14,7 @@ class App extends React.Component {
         allCourses.push({ program, number, name });
       }
     };
-    winterCourses.forEach(({ program, number, name, prereqs }) => {
+    springCourses.forEach(({ program, number, name, prereqs }) => {
       if (!allCourses.some(({ name: otherName }) => name === otherName))
         allCourses.push({ program, number, name });
       addPrereqs(prereqs);
@@ -61,7 +62,7 @@ class App extends React.Component {
       return prereqs.slice(1).some(prereq => this.checkPrereqs(prereq));
   }
   render() {
-    const availableCourses = winterCourses.filter(
+    const availableCourses = springCourses.filter(
       course =>
         this.state.previousCourses.every(
           previousCourse =>
@@ -89,7 +90,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <div style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>
-          <h1>DePaul Game Design Scheduler: Winter 2021</h1>
+          <h1>DePaul Game Design Scheduler: Spring 2021</h1>
           <div style={{ textAlign: "center" }}>
             <label
               htmlFor="yearSelect"

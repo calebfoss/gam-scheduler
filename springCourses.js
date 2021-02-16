@@ -6,8 +6,8 @@ const springCourses = [
     name: "Ethics In Comp Games/cinema",
     credits: 4,
     days: [],
-    startTime: [null, null],
-    endTime: [null, null]
+    startTime: [],
+    endTime: []
   },
   {
     program: "GAM",
@@ -266,8 +266,8 @@ const springCourses = [
     name: "Physics For Game Developers",
     credits: 4,
     days: [],
-    startTime: [null, null],
-    endTime: [null, null]
+    startTime: [],
+    endTime: []
   },
   {
     program: "GAM",
@@ -346,8 +346,8 @@ const springCourses = [
     name: "Ethics In Comp Games/cinema",
     credits: 4,
     days: [],
-    startTime: [null, null],
-    endTime: [null, null]
+    startTime: [],
+    endTime: []
   },
   {
     program: "GAM",
