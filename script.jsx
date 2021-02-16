@@ -5,7 +5,6 @@ class App extends React.Component {
     super(props);
     const allCourses = [];
     const addPrereqs = p => {
-      console.log(p);
       if (Array.isArray(p)) p.slice(1).forEach(sp => addPrereqs(sp));
       else if (
         !allCourses.some(({ name: otherName }) => p.name === otherName)
