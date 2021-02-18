@@ -225,11 +225,20 @@ const springCourses = [
     section: 602,
     name: "Playtesting",
     credits: 4,
-    prereqs: [],
+    prereqs: [
+      "AND",
+      { program: "GAM", number: 226, name: "Fundamentals of Game Design" }
+    ],
     days: ["M"],
     startTime: [13, 30],
     endTime: [16, 45],
-    required: []
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
@@ -271,7 +280,13 @@ const springCourses = [
     days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
-    required: []
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     program: "GAM",
