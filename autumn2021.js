@@ -895,12 +895,12 @@ const autumnCourses = [
     prereqs: [
       "OR",
       {
-        program: "MAT",
+        subject: "MAT",
         number: 130,
         name: "Precalculus"
       },
       {
-        program: "MAT",
+        subject: "MAT",
         number: 140,
         name: "Discrete Mathematics I"
       }

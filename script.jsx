@@ -9,13 +9,13 @@ class App extends React.Component {
       else if (
         !allCourses.some(({ name: otherName }) => p.name === otherName)
       ) {
-        const { program, number, name } = p;
-        allCourses.push({ program, number, name });
+        const { subject, number, name } = p;
+        allCourses.push({ subject, number, name });
       }
     };
-    autumnCourses.forEach(({ program, number, name, prereqs }) => {
+    autumnCourses.forEach(({ subject, number, name, prereqs }) => {
       if (!allCourses.some(({ name: otherName }) => name === otherName))
-        allCourses.push({ program, number, name });
+        allCourses.push({ subject, number, name });
       addPrereqs(prereqs);
     });
     allCourses.sort((a, b) => a.number - b.number);
@@ -66,13 +66,13 @@ class App extends React.Component {
         this.state.previousCourses.every(
           previousCourse =>
             !previousCourse.taken ||
-            previousCourse.program !== course.program ||
+            previousCourse.subject !== course.subject ||
             previousCourse.number !== course.number
         ) &&
         this.checkPrereqs(course.prereqs) &&
         !this.state.scheduledCourses.some(
           scheduledCourse =>
-            (course.program === scheduledCourse.program &&
+            (course.subject === scheduledCourse.subject &&
               course.number === scheduledCourse.number) ||
             course.days.some(
               day =>
@@ -156,7 +156,7 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
               onChange={() => toggleCourseTaken(course)}
             />
             <label htmlFor={`${course.name}_previous`}>
-              {course.program} {course.number}: {course.name}
+              {course.subject} {course.number}: {course.name}
             </label>
           </li>
         ))}
@@ -177,47 +177,42 @@ const CourseOptions = ({
         <h2>{title}</h2>
       </div>
       <ul>
-        {courses.map(course => {
-          console.log(course);
-          return (
-            <li key={course.name + course.section}>
-              <label
-                htmlFor={
-                  "add" + course.program + course.number + course.section
-                }
+        {courses.map(course => (
+          <li key={course.name + course.section}>
+            <label
+              htmlFor={"add" + course.subject + course.number + course.section}
+            >
+              {course.subject} {course.number}: {course.name}
+            </label>
+            <button
+              id={"add" + course.subject + course.number + course.section}
+              onClick={() => addCourseScheduled(course)}
+              className="addButton"
+            >
+              +
+            </button>
+            <div className="classInfo">
+              {course.days.length
+                ? `${course.days.join("")} ${
+                    course.startTime[0] === 12 ? 12 : course.startTime[0] % 12
+                  }:${course.startTime[1].toString().padStart(2, 0)}${
+                    course.startTime[0] < 12 ? "AM" : "PM"
+                  } - ${
+                    course.endTime[0] === 12 ? 12 : course.endTime[0] % 12
+                  }:${course.endTime[1].toString().padStart(2, 0)} ${
+                    course.endTime[0] < 12 ? "AM" : "PM"
+                  }`
+                : "Async"}
+              <br />
+              <a
+                href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.subject}&CatalogNbr=${course.number}`}
+                target="_"
               >
-                {course.program} {course.number}: {course.name}
-              </label>
-              <button
-                id={"add" + course.program + course.number + course.section}
-                onClick={() => addCourseScheduled(course)}
-                className="addButton"
-              >
-                +
-              </button>
-              <div className="classInfo">
-                {course.days.length
-                  ? `${course.days.join("")} ${
-                      course.startTime[0] === 12 ? 12 : course.startTime[0] % 12
-                    }:${course.startTime[1].toString().padStart(2, 0)}${
-                      course.startTime[0] < 12 ? "AM" : "PM"
-                    } - ${
-                      course.endTime[0] === 12 ? 12 : course.endTime[0] % 12
-                    }:${course.endTime[1].toString().padStart(2, 0)} ${
-                      course.endTime[0] < 12 ? "AM" : "PM"
-                    }`
-                  : "Async"}
-                <br />
-                <a
-                  href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.program}&CatalogNbr=${course.number}`}
-                  target="_"
-                >
-                  More info
-                </a>
-              </div>
-            </li>
-          );
-        })}
+                More info
+              </a>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
@@ -249,7 +244,7 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         }
       >
         <div className="courseName">
-          {course.program} {course.number}: {course.name}
+          {course.subject} {course.number}: {course.name}
         </div>
         <button
           className="removeButton"
