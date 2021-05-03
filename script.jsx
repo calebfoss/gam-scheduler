@@ -170,56 +170,57 @@ const CourseOptions = ({
   courses,
   scheduledCourses,
   addCourseScheduled
-}) => {
-  return (
-    <div className="checklist">
-      <div>
-        <h2>{title}</h2>
-      </div>
-      <ul>
-        {courses.map(course => (
-          <li key={course.name + course.section}>
-            <label
-              htmlFor={"add" + course.subject + course.number + course.section}
-            >
-              {course.subject} {course.number}: {course.name}
-            </label>
-            <button
-              id={"add" + course.subject + course.number + course.section}
-              onClick={() => addCourseScheduled(course)}
-              className="addButton"
-            >
-              +
-            </button>
-            <div className="classInfo">
-              {course.days.length
-                ? `${course.days.join("")} ${
-                    course.startTime[0] === 12 ? 12 : course.startTime[0] % 12
-                  }:${course.startTime[1].toString().padStart(2, 0)}${
-                    course.startTime[0] < 12 ? "AM" : "PM"
-                  } - ${
-                    course.endTime[0] === 12 ? 12 : course.endTime[0] % 12
-                  }:${course.endTime[1].toString().padStart(2, 0)} ${
-                    course.endTime[0] < 12 ? "AM" : "PM"
-                  }`
-                : "Async"}
-              <br />
-              <a
-                href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.subject}&CatalogNbr=${course.number}`}
-                target="_"
-              >
-                More info
-              </a>
-            </div>
-          </li>
-        ))}
-      </ul>
+}) => (
+  <div className="checklist">
+    <div>
+      <h2>{title}</h2>
     </div>
-  );
-};
+    <ul>
+      {courses.map(course => (
+        <li key={course.name + course.section}>
+          <label
+            htmlFor={"add" + course.subject + course.number + course.section}
+          >
+            {course.subject} {course.number}: {course.name}
+          </label>
+          <button
+            id={"add" + course.subject + course.number + course.section}
+            onClick={() => addCourseScheduled(course)}
+            className="addButton"
+          >
+            +
+          </button>
+          <div className="classInfo">
+            {course.days.length
+              ? `${course.days.join("")} ${
+                  course.startTime[0] === 12 ? 12 : course.startTime[0] % 12
+                }:${course.startTime[1].toString().padStart(2, 0)}${
+                  course.startTime[0] < 12 ? "AM" : "PM"
+                } - ${
+                  course.endTime[0] === 12 ? 12 : course.endTime[0] % 12
+                }:${course.endTime[1].toString().padStart(2, 0)} ${
+                  course.endTime[0] < 12 ? "AM" : "PM"
+                }`
+              : "Async"}
+            <br />
+            <a
+              href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.subject}&CatalogNbr=${course.number}`}
+              target="_"
+            >
+              More info
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
+  if(scheduledCourses.length)
+  console.log(scheduledCourses.includes("M"))
   const courseToDiv = (day, course) => {
+    console.log(course);
     const startTimePercent =
       (course.startTime[0] + course.startTime[1] * (1 / 60) - 10) * (100 / 11);
     const endTimePercent =
