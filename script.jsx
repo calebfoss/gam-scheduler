@@ -1,4 +1,4 @@
-/* globals React, ReactDOM, springCourses */
+/* globals React, ReactDOM, autumnCourses */
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class App extends React.Component {
         allCourses.push({ program, number, name });
       }
     };
-    springCourses.forEach(({ program, number, name, prereqs }) => {
+    autumnCourses.forEach(({ program, number, name, prereqs }) => {
       if (!allCourses.some(({ name: otherName }) => name === otherName))
         allCourses.push({ program, number, name });
       addPrereqs(prereqs);
@@ -61,7 +61,7 @@ class App extends React.Component {
       return prereqs.slice(1).some(prereq => this.checkPrereqs(prereq));
   }
   render() {
-    const availableCourses = springCourses.filter(
+    const availableCourses = autumnCourses.filter(
       course =>
         this.state.previousCourses.every(
           previousCourse =>
@@ -177,42 +177,47 @@ const CourseOptions = ({
         <h2>{title}</h2>
       </div>
       <ul>
-        {courses.map(course => (
-          <li key={course.name + course.section}>
-            <label
-              htmlFor={"add" + course.program + course.number + course.section}
-            >
-              {course.program} {course.number}: {course.name}
-            </label>
-            <button
-              id={"add" + course.program + course.number + course.section}
-              onClick={() => addCourseScheduled(course)}
-              className="addButton"
-            >
-              +
-            </button>
-            <div className="classInfo">
-              {course.days.length
-                ? `${course.days.join("")} ${
-                    course.startTime[0] === 12 ? 12 : course.startTime[0] % 12
-                  }:${course.startTime[1].toString().padStart(2, 0)}${
-                    course.startTime[0] < 12 ? "AM" : "PM"
-                  } - ${
-                    course.endTime[0] === 12 ? 12 : course.endTime[0] % 12
-                  }:${course.endTime[1].toString().padStart(2, 0)} ${
-                    course.endTime[0] < 12 ? "AM" : "PM"
-                  }`
-                : "Async"}
-              <br />
-              <a
-                href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.program}&CatalogNbr=${course.number}`}
-                target="_"
+        {courses.map(course => {
+          console.log(course);
+          return (
+            <li key={course.name + course.section}>
+              <label
+                htmlFor={
+                  "add" + course.program + course.number + course.section
+                }
               >
-                More info
-              </a>
-            </div>
-          </li>
-        ))}
+                {course.program} {course.number}: {course.name}
+              </label>
+              <button
+                id={"add" + course.program + course.number + course.section}
+                onClick={() => addCourseScheduled(course)}
+                className="addButton"
+              >
+                +
+              </button>
+              <div className="classInfo">
+                {course.days.length
+                  ? `${course.days.join("")} ${
+                      course.startTime[0] === 12 ? 12 : course.startTime[0] % 12
+                    }:${course.startTime[1].toString().padStart(2, 0)}${
+                      course.startTime[0] < 12 ? "AM" : "PM"
+                    } - ${
+                      course.endTime[0] === 12 ? 12 : course.endTime[0] % 12
+                    }:${course.endTime[1].toString().padStart(2, 0)} ${
+                      course.endTime[0] < 12 ? "AM" : "PM"
+                    }`
+                  : "Async"}
+                <br />
+                <a
+                  href={`https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=${course.program}&CatalogNbr=${course.number}`}
+                  target="_"
+                >
+                  More info
+                </a>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
