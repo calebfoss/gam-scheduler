@@ -217,8 +217,11 @@ const CourseOptions = ({
 );
 
 const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
-  if(scheduledCourses.length)
-  console.log(scheduledCourses.includes("M"))
+  if (scheduledCourses.length)
+    console.log(
+      scheduledCourses[0].days,
+      scheduledCourses[0].days.includes("M")
+    );
   const courseToDiv = (day, course) => {
     console.log(course);
     const startTimePercent =
