@@ -3,10 +3,10 @@ const autumnCourses = [
     subject: "ANI",
     number: 230,
     section: 403,
-    name: "3d Design & Modeling",
+    name: "3D Design & Modeling",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [10, 10],
     endTime: [11, 40],
     required: {
@@ -21,10 +21,10 @@ const autumnCourses = [
     subject: "ANI",
     number: 230,
     section: 401,
-    name: "3d Design & Modeling",
+    name: "3D Design & Modeling",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [11, 50],
     endTime: [13, 20],
     required: {
@@ -39,17 +39,17 @@ const autumnCourses = [
     subject: "ANI",
     number: 231,
     section: 402,
-    name: "3d Animation",
+    name: "3D Animation",
     credits: 4,
     prereqs: [
       "AND",
       {
         subject: "ANI",
         number: 230,
-        name: "3D Design and Modeling"
+        name: "3D Design & Modeling"
       }
     ],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: {
@@ -64,17 +64,17 @@ const autumnCourses = [
     subject: "ANI",
     number: 231,
     section: 401,
-    name: "3d Animation",
+    name: "3D Animation",
     credits: 4,
     prereqs: [
       "AND",
       {
         subject: "ANI",
         number: 230,
-        name: "3D Design and Modeling"
+        name: "3D Design & Modeling"
       }
     ],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: {
@@ -92,7 +92,7 @@ const autumnCourses = [
     name: "Games Literacy",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: {
@@ -110,7 +110,7 @@ const autumnCourses = [
     name: "Virtual Worlds & Online Commun",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: []
@@ -134,7 +134,7 @@ const autumnCourses = [
     name: "Fundamentals Of Game Design",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
     required: {
@@ -152,7 +152,7 @@ const autumnCourses = [
     name: "Fundamentals Of Game Design",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [11, 50],
     endTime: [13, 20],
     required: {
@@ -170,7 +170,7 @@ const autumnCourses = [
     name: "Fundamentals Of Game Design",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [11, 20],
     endTime: [12, 50],
     required: {
@@ -206,7 +206,7 @@ const autumnCourses = [
     name: "Ethics In Comp Games/cinema",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [94, 0],
     endTime: [11, 10],
     required: {
@@ -242,7 +242,7 @@ const autumnCourses = [
     name: "Ethics In Comp Games/cinema",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: {
@@ -344,7 +344,7 @@ const autumnCourses = [
     name: "Playgramming",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: {
@@ -362,7 +362,7 @@ const autumnCourses = [
     name: "Playgramming",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
     required: {
@@ -380,7 +380,7 @@ const autumnCourses = [
     name: "Game Development I",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [11, 50],
     endTime: [13, 20],
     required: {
@@ -402,7 +402,7 @@ const autumnCourses = [
       {
         subject: "GAM",
         number: 226,
-        name: "Fundamentals of Game Design"
+        name: "Fundamentals Of Game Design"
       },
       [
         "OR",
@@ -419,11 +419,11 @@ const autumnCourses = [
         {
           subject: "CSC",
           number: 243,
-          name: "Python for subjectmers"
+          name: "Python for Programmers"
         }
       ]
     ],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: {
@@ -456,7 +456,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 325,
     section: 710,
-    name: "Applied 3d Geometry",
+    name: "Applied 3D Geometry",
     credits: 4,
     prereqs: [],
     days: [],
@@ -468,7 +468,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 325,
     section: 701,
-    name: "Applied 3d Geometry",
+    name: "Applied 3D Geometry",
     credits: 4,
     prereqs: [],
     days: ["Th"],
@@ -502,7 +502,7 @@ const autumnCourses = [
       {
         subject: "CSC",
         number: 243,
-        name: "Python for subjecters"
+        name: "Python for Programmers"
       }
     ],
     days: ["Tu"],
@@ -530,7 +530,7 @@ const autumnCourses = [
         name: "Game Development I"
       }
     ],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [11, 50],
     endTime: [13, 20],
     required: {
@@ -560,7 +560,7 @@ const autumnCourses = [
     name: "Solo Game Development Project",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: []
@@ -592,7 +592,7 @@ const autumnCourses = [
         name: "Solo Game Development Project"
       }
     ],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: {
@@ -610,7 +610,7 @@ const autumnCourses = [
     name: "Vr Game Development",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: []
@@ -622,7 +622,7 @@ const autumnCourses = [
     name: "Object-oriented Game Dev",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: []
@@ -659,7 +659,7 @@ const autumnCourses = [
         }
       ]
     ],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [11, 50],
     endTime: [13, 20],
     required: {
@@ -689,7 +689,7 @@ const autumnCourses = [
         name: "Game Modification Workshop"
       }
     ],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [10, 10],
     endTime: [11, 40],
     required: {
@@ -791,7 +791,7 @@ const autumnCourses = [
     name: "Topics In Game subjectming",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: []
@@ -839,7 +839,7 @@ const autumnCourses = [
     name: "Intro To Visual Design",
     credits: 4,
     prereqs: [],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [10, 10],
     endTime: [11, 40],
     required: {
@@ -857,7 +857,7 @@ const autumnCourses = [
     name: "Intro To Visual Design",
     credits: 4,
     prereqs: [],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [15, 10],
     endTime: [16, 40],
     required: {
@@ -905,7 +905,7 @@ const autumnCourses = [
         name: "Discrete Mathematics I"
       }
     ],
-    days: ["M, W"],
+    days: ["M", "W"],
     startTime: [13, 30],
     endTime: [15, 0],
     required: {
@@ -995,7 +995,7 @@ const autumnCourses = [
         name: "Discrete Mathematics I"
       }
     ],
-    days: ["Tu, Th"],
+    days: ["Tu", "Th"],
     startTime: [11, 50],
     endTime: [13, 20],
     required: {
