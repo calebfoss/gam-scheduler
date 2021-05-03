@@ -325,7 +325,10 @@ const autumnCourses = [
     section: 701,
     name: "Intro To Game Production",
     credits: 4,
-    prereqs: [245],
+    prereqs: [
+      "AND",
+      { subject: "GAM", number: 245, name: "Game Development II" }
+    ],
     days: ["Th"],
     startTime: [17, 45],
     endTime: [21, 0],
@@ -545,7 +548,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 351,
     section: 730,
-    name: "Expressive Game Audio Scriptin",
+    name: "Expressive Game Audio Scripting",
     credits: 4,
     prereqs: [],
     days: ["W"],
@@ -563,7 +566,13 @@ const autumnCourses = [
     days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
-    required: []
+    required: {
+      "1617": true,
+      "1718": true,
+      "1819": true,
+      "1920": true,
+      "2021": true
+    }
   },
   {
     subject: "GAM",
@@ -607,7 +616,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 369,
     section: 401,
-    name: "Vr Game Development",
+    name: "VR Game Development",
     credits: 4,
     prereqs: [],
     days: ["Tu", "Th"],
@@ -681,7 +690,7 @@ const autumnCourses = [
       {
         subject: "GAM",
         number: 377,
-        name: "Game Engine subjectming II"
+        name: "Game Engine Programming II"
       },
       {
         subject: "GAM",
@@ -776,7 +785,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 398,
     section: 410,
-    name: "Topics In Game subjectming",
+    name: "Topics In Game Programming",
     credits: 4,
     prereqs: [],
     days: [],
@@ -788,7 +797,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 398,
     section: 401,
-    name: "Topics In Game subjectming",
+    name: "Topics In Game Programming",
     credits: 4,
     prereqs: [],
     days: ["Tu", "Th"],
