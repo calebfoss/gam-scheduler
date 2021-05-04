@@ -587,7 +587,7 @@ const autumnCourses = [
         {
           subject: "GAM",
           number: 340,
-          name: "Practical Scripting for Games"
+          name: "Practical Scripting For Games"
         },
         {
           subject: "GAM",
@@ -628,7 +628,7 @@ const autumnCourses = [
     subject: "GAM",
     number: 372,
     section: 401,
-    name: "Object-oriented Game Dev",
+    name: "Object-Oriented Game Dev",
     credits: 4,
     prereqs: [],
     days: ["Tu", "Th"],
@@ -652,7 +652,7 @@ const autumnCourses = [
       {
         subject: "GAM",
         number: 372,
-        name: "Object-Oriented Game Development"
+        name: "Object-Oriented Game Dev"
       },
       [
         "AND",
@@ -664,7 +664,7 @@ const autumnCourses = [
         {
           subject: "GAM",
           number: 341,
-          name: "Introduction to Level Design"
+          name: "Introduction To Level Design"
         }
       ]
     ],
