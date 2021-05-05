@@ -562,7 +562,19 @@ const autumnCourses = [
     section: 401,
     name: "Solo Game Development Project",
     credits: 4,
-    prereqs: [],
+    prereqs: [
+      "AND",
+      {
+        subject: "GAM",
+        number: 340,
+        name: "Practical Scripting For Games"
+      },
+      {
+        subject: "GAM",
+        number: 341,
+        name: "Introduction to Level Design"
+      }
+    ],
     days: ["M", "W"],
     startTime: [15, 10],
     endTime: [16, 40],
