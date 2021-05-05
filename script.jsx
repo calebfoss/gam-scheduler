@@ -89,7 +89,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <div style={{ gridColumnStart: 1, gridColumnEnd: 4 }}>
-          <h1>DePaul Game Design Scheduler: Spring 2021</h1>
+          <h1>DePaul Game Design Scheduler: Autumn 2021</h1>
           <div style={{ textAlign: "center" }}>
             <label
               htmlFor="yearSelect"
