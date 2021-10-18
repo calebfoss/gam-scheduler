@@ -4,8 +4,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     const allCourses = [];
-    const addPrereqs = p => {
-      if (Array.isArray(p)) p.slice(1).forEach(sp => addPrereqs(sp));
+    const addPrereqs = (p) => {
+      if (Array.isArray(p)) p.slice(1).forEach((sp) => addPrereqs(sp));
       else if (
         !allCourses.some(({ name: otherName }) => p.name === otherName)
       ) {
@@ -19,70 +19,70 @@ class App extends React.Component {
       addPrereqs(prereqs);
     });
     allCourses.sort((a, b) => a.number - b.number);
-    const previousCourses = allCourses.map(course => ({
+    const previousCourses = allCourses.map((course) => ({
       ...course,
-      ...{ taken: false }
+      ...{ taken: false },
     }));
     this.state = { previousCourses, scheduledCourses: [], year: "2021" };
   }
   toggleCourseTaken(toggleCourse) {
-    const previousCourses = this.state.previousCourses.map(otherCourse => ({
+    const previousCourses = this.state.previousCourses.map((otherCourse) => ({
       ...otherCourse,
       ...{
         taken:
-          otherCourse === toggleCourse ? !otherCourse.taken : otherCourse.taken
-      }
+          otherCourse === toggleCourse ? !otherCourse.taken : otherCourse.taken,
+      },
     }));
     this.setState({ previousCourses });
   }
   addCourseScheduled(course) {
     this.setState({
-      scheduledCourses: this.state.scheduledCourses.concat(course)
+      scheduledCourses: this.state.scheduledCourses.concat(course),
     });
   }
   removeCourseScheduled(course) {
     this.setState({
       scheduledCourses: this.state.scheduledCourses.filter(
-        otherCourse => course !== otherCourse
-      )
+        (otherCourse) => course !== otherCourse
+      ),
     });
   }
   checkPrereqs(prereqs) {
     const { previousCourses } = this.state;
     if (!Array.isArray(prereqs))
       return previousCourses.some(
-        course => course.taken && course.name === prereqs.name
+        (course) => course.taken && course.name === prereqs.name
       );
     else if (prereqs.length === 0) {
       return true;
     } else if (prereqs[0] === "AND")
-      return prereqs.slice(1).every(prereq => this.checkPrereqs(prereq));
+      return prereqs.slice(1).every((prereq) => this.checkPrereqs(prereq));
     else if (prereqs[0] === "OR")
-      return prereqs.slice(1).some(prereq => this.checkPrereqs(prereq));
+      return prereqs.slice(1).some((prereq) => this.checkPrereqs(prereq));
   }
   render() {
     const availableCourses = autumnCourses.filter(
-      course =>
+      (course) =>
         this.state.previousCourses.every(
-          previousCourse =>
+          (previousCourse) =>
             !previousCourse.taken ||
             previousCourse.subject !== course.subject ||
             previousCourse.number !== course.number
         ) &&
         this.checkPrereqs(course.prereqs) &&
         !this.state.scheduledCourses.some(
-          scheduledCourse =>
+          (scheduledCourse) =>
             (course.subject === scheduledCourse.subject &&
               course.number === scheduledCourse.number) ||
             course.days.some(
-              day =>
-                scheduledCourse.days.some(schDay => schDay === day) &&
-                (course.startTime[0] + course.startTime[1] * (1 / 60) <
+              (day) =>
+                scheduledCourse.days.some((schDay) => schDay === day) &&
+                course.startTime[0] + course.startTime[1] * (1 / 60) <
                   scheduledCourse.endTime[0] +
                     scheduledCourse.endTime[1] * (1 / 60) &&
-                  course.endTime[0] + course.endTime[1] * (1 / 60) >
-                    scheduledCourse.startTime[0] +
-                      scheduledCourse.startTime[1] * (1 / 60))
+                course.endTime[0] + course.endTime[1] * (1 / 60) >
+                  scheduledCourse.startTime[0] +
+                    scheduledCourse.startTime[1] * (1 / 60)
             )
         )
     );
@@ -99,7 +99,7 @@ class App extends React.Component {
             </label>
             <select
               id="yearSelect"
-              onChange={e => this.setState({ year: e.target.value })}
+              onChange={(e) => this.setState({ year: e.target.value })}
               value={this.state.year}
             >
               <option value="2021">2020/21</option>
@@ -113,7 +113,7 @@ class App extends React.Component {
 
         <Previous
           previousCourses={this.state.previousCourses}
-          toggleCourseTaken={course => this.toggleCourseTaken(course)}
+          toggleCourseTaken={(course) => this.toggleCourseTaken(course)}
         />
         <CourseOptions
           title="Major requirements"
@@ -121,7 +121,7 @@ class App extends React.Component {
             ({ required }) => required[this.state.year]
           )}
           scheduledCourses={this.state.scheduledCourses}
-          addCourseScheduled={course => this.addCourseScheduled(course)}
+          addCourseScheduled={(course) => this.addCourseScheduled(course)}
         />
         <CourseOptions
           title="Electives"
@@ -129,11 +129,11 @@ class App extends React.Component {
             ({ required }) => !required[this.state.year]
           )}
           scheduledCourses={this.state.scheduledCourses}
-          addCourseScheduled={course => this.addCourseScheduled(course)}
+          addCourseScheduled={(course) => this.addCourseScheduled(course)}
         />
         <Schedule
           scheduledCourses={this.state.scheduledCourses}
-          removeCourseScheduled={course => this.removeCourseScheduled(course)}
+          removeCourseScheduled={(course) => this.removeCourseScheduled(course)}
         />
       </div>
     );
@@ -147,7 +147,7 @@ const Previous = ({ previousCourses, toggleCourseTaken }) => {
         <h2>Courses you have already taken</h2>
       </div>
       <ul>
-        {previousCourses.map(course => (
+        {previousCourses.map((course) => (
           <li key={course.name}>
             <input
               type="checkbox"
@@ -169,14 +169,14 @@ const CourseOptions = ({
   title,
   courses,
   scheduledCourses,
-  addCourseScheduled
+  addCourseScheduled,
 }) => (
   <div className="checklist">
     <div>
       <h2>{title}</h2>
     </div>
     <ul>
-      {courses.map(course => (
+      {courses.map((course) => (
         <li key={course.name + course.section}>
           <label
             htmlFor={"add" + course.subject + course.number + course.section}
@@ -232,12 +232,14 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
                 position: "absolute",
                 top: startTimePercent + "%",
                 height: endTimePercent - startTimePercent + "%",
-                backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
-                  36},75%,95%,0.85)`
+                backgroundColor: `hsla(${
+                  scheduledCourses.indexOf(course) * 36
+                },75%,95%,0.85)`,
               }
             : {
-                backgroundColor: `hsla(${scheduledCourses.indexOf(course) *
-                  36},75%,95%,0.85)`
+                backgroundColor: `hsla(${
+                  scheduledCourses.indexOf(course) * 36
+                },75%,95%,0.85)`,
               }
         }
       >
@@ -281,8 +283,8 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         <div className="dayCourses">
           {lines}
           {scheduledCourses
-            .filter(course => course.days.includes("M"))
-            .map(course => courseToDiv("Monday", course))}
+            .filter((course) => course.days.includes("M"))
+            .map((course) => courseToDiv("Monday", course))}
         </div>
       </div>
       <div id="Tuesday" className="day">
@@ -290,8 +292,8 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         <div className="dayCourses">
           {lines}
           {scheduledCourses
-            .filter(course => course.days.includes("Tu"))
-            .map(course => courseToDiv("Tuesday", course))}
+            .filter((course) => course.days.includes("Tu"))
+            .map((course) => courseToDiv("Tuesday", course))}
         </div>
       </div>
       <div id="Wednesday" className="day">
@@ -299,8 +301,8 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         <div className="dayCourses">
           {lines}
           {scheduledCourses
-            .filter(course => course.days.includes("W"))
-            .map(course => courseToDiv("Wednesday", course))}
+            .filter((course) => course.days.includes("W"))
+            .map((course) => courseToDiv("Wednesday", course))}
         </div>
       </div>
       <div id="Thursday" className="day">
@@ -308,16 +310,16 @@ const Schedule = ({ scheduledCourses, removeCourseScheduled }) => {
         <div className="dayCourses">
           {lines}
           {scheduledCourses
-            .filter(course => course.days.includes("Th"))
-            .map(course => courseToDiv("Thursday", course))}
+            .filter((course) => course.days.includes("Th"))
+            .map((course) => courseToDiv("Thursday", course))}
         </div>
       </div>
       <div id="Async" className="day">
         <h2>Async</h2>
         <div className="dayCourses">
           {scheduledCourses
-            .filter(course => course.days.length === 0)
-            .map(course => courseToDiv("Async", course))}
+            .filter((course) => course.days.length === 0)
+            .map((course) => courseToDiv("Async", course))}
         </div>
       </div>
     </div>
