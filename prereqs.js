@@ -249,6 +249,7 @@ const prereqs = {
     382: "GAM 245",
     386: "CSC 371",
     394: "GAM 377 or GAM 392",
+    395: "GAM 394",
     425: "CSC 403",
     427: "GAM 426",
     450: "CSC 461 and (SE 456 or SE 450)",
